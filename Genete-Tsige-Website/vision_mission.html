@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">ራዕይ እና ተልዕኮ | መናገሻ ገነተ ጽጌ ሰንበት ትምህርት ቤት</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: "Noto Sans Ethiopic", "Nyala", sans-serif; background: #faf8f4; }
+  </style>
+</head>
+<body class="text-gray-800">
+
+  <!-- HEADER WITH LANGUAGE SELECTOR -->
+  <header class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="flex h-10 w-10 items-center justify-center rounded-full bg-rose-950 text-amber-300 font-bold">✝</div>
+        <div>
+          <h1 class="font-bold text-rose-950 text-base md:text-lg" data-i18n="brandName">ገነተ ጽጌ</h1>
+          <p class="text-[10px] text-gray-600 font-medium" data-i18n="brandSubtitle">ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት</p>
+        </div>
+      </a>
+
+      <!-- LANGUAGE SELECTOR -->
+      <div class="flex items-center gap-3">
+        <select id="langSelect" onchange="changeLanguage(this.value)" class="rounded-lg border border-amber-600 px-3 py-1.5 text-xs font-semibold text-rose-950 bg-amber-50 focus:outline-none">
+          <option value="am">አማርኛ</option>
+          <option value="en">English</option>
+          <option value="om">Afaan Oromoo</option>
+          <option value="ti">ትግርኛ</option>
+        </select>
+        <a href="index.html" class="text-xs font-bold text-rose-950 bg-stone-100 px-3 py-1.5 rounded-lg border hover:bg-stone-200 transition" data-i18n="backHome">
+          &larr; መነሻ
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto space-y-10">
+      
+      <!-- VISION BOX -->
+      <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-stone-200">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-10 h-10 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xl"> ️</span>
+          <h2 class="text-2xl font-bold text-rose-950" data-i18n="visionHeading">የሰንበት ትምህርት ቤቱ ራዕይ (Vision)</h2>
+        </div>
+        <p class="text-gray-700 text-lg leading-relaxed bg-amber-50/50 p-6 rounded-xl border border-amber-200/60 font-medium" data-i18n="visionText">
+          "ለሌሎች ሰንበት ትምህርት ቤቶች አርአያ የሚሆኑ በሃይማኖት በምግባር የታነጹ የሀገርና የቤተክርስቲያን ተረካቢ ወጣቶች ማፍሪያ ተቋም መሆን ነው[cite: 8]።"
+        </p>
+      </div>
+
+      <!-- MISSION BOX -->
+      <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-stone-200">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-10 h-10 rounded-full bg-rose-100 text-rose-900 flex items-center justify-center font-bold text-xl"></span>
+          <h2 class="text-2xl font-bold text-rose-950" data-i18n="missionHeading">የሰንበት ትምህርት ቤቱ ተልዕኮ (Mission)</h2>
+        </div>
+        
+        <ul class="space-y-4 text-gray-700 text-base">
+          <li class="flex items-start gap-3">
+            <span class="bg-rose-950 text-amber-300 rounded-full w-6 h-6 flex items-center justify-center shrink-0 text-xs font-bold mt-1">1</span>
+            <span data-i18n="m1">የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ዶግማ፣ ቀኖናና ትውፊት ሳይስት ሳይበረዝ በቀጥታ ከትውልድ ወደ ትውልድ እንዲተላለፍ የበኩሉን ድርሻ መወጣት።</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="bg-rose-950 text-amber-300 rounded-full w-6 h-6 flex items-center justify-center shrink-0 text-xs font-bold mt-1">2</span>
+            <span data-i18n="m2">ማንኛውም የቤተ ክርስቲያን ተከታይ በተለይም ወጣቱ ትውልድ የሃይማኖቱን ዶግማ፣ ቀኖና፣ ትውፊት፣ ታሪክ፣ ባህልና ጥበብ እንዲያውቅ ማድረግ።</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="bg-rose-950 text-amber-300 rounded-full w-6 h-6 flex items-center justify-center shrink-0 text-xs font-bold mt-1">3</span>
+            <span data-i18n="m3">መንፈሳውያን ወጣቶች በሰንበት ትምህርት ቤት የቤተክርስቲያንን ዓላማ አስተምሮ እና ቃል እግዚአብሔርን ማስተማር ሁለገብ መንፈሳዊ አገልግሎትን መስጠትና በቀጣይ የሀገርና የቤተክርስቲያን ተረካቢዎች እንዲሆኑ የበኩሉን አስተዋጽኦ ማበርከት።</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="bg-rose-950 text-amber-300 rounded-full w-6 h-6 flex items-center justify-center shrink-0 text-xs font-bold mt-1">4</span>
+            <span data-i18n="m4">በሥነ ምግባር የታነጸ ለሌላው ማኅበረሰብ አርአያ የሚሆን ትውልድ ማፍራት።</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="bg-rose-950 text-amber-300 rounded-full w-6 h-6 flex items-center justify-center shrink-0 text-xs font-bold mt-1">5</span>
+            <span data-i18n="m5">መንፈሳውያን ወጣቶች በተሰማሩበት የትምህርት፣ የሥራና የማኅበራዊ ኑሮ በሚገጥማቸው በጎ አጋጣሚና ተግዳሮቶች በመንፈሳዊነትና በመረዳዳት እንዲወጡ የሚቻለውን ሁሉ ማድረግ።</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-[#3a101f] px-6 py-6 text-center text-sm text-stone-300 mt-12">
+    <p data-i18n="footerText">© 2019/2026 የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን ሰንበት ትምህርት ቤት</p>
+  </footer>
+
+  <script>
+    const translations = {
+      am: {
+        brandName: "ገነተ ጽጌ", brandSubtitle: "ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት", backHome: "← መነሻ",
+        visionHeading: "የሰንበት ትምህርት ቤቱ ራዕይ (Vision)",
+        visionText: "ለሌሎች ሰንበት ትምህርት ቤቶች አርአያ የሚሆኑ በሃይማኖት በምግባር የታነጹ የሀገርና የቤተክርስቲያን ተረካቢ ወጣቶች ማፍሪያ ተቋም መሆን ነው።",
+        missionHeading: "የሰንበት ትምህርት ቤቱ ተልዕኮ (Mission)",
+        m1: "የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ዶግማ፣ ቀኖናና ትውፊት ሳይሰወት ሳይበረዝ በቀጥታ ከትውልድ ወደ ትውልድ እንዲተላለፍ የበኩሉን ድርሻ መወጣት።",
+        m2: "ማንኛውም የቤተ ክርስቲያን ተከታይ በተለይም ወጣቱ ትውልድ የሃይማኖቱን ዶግማ፣ ቀኖና፣ ትውፊት፣ ታሪክ፣ ባህልና ጥበብ እንዲያውቅ ማድረግ።",
+        m3: "መንፈሳውያን ወጣቶች በሰንበት ትምህርት ቤት የተደራጁበትን ዓላማ አስተምሮ ቃል እግዚአብሔርን መማር ሁለገብ መንፈሳዊ አገልግሎትን መስጠትና በቀጣይ የሀገርና የቤተክርስቲያን ተረካቢዎች እንዲሆኑ የበኩሉን አስተዋጽኦ ማበርከት።",
+        m4: "በሥነ ምግባር የታነጸ ለሌላው ማኅበረሰብ አርአያ የሚሆን ትውልድ ማፍራት።",
+        m5: "መንፈሳውያን ወጣቶች በተሰማሩበት የትምህርት፣ የሥራና የማኅበራዊ ኑሮ በሚገጥማቸው በጎ አጋጣሚና ተግዳሮቶች በመንፈሳዊነትና በመረዳዳት እንዲወጡ የሚቻለውን ሁሉ ማድረግ።",
+        footerText: "© 2019/2026 የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን ሰንበት ትምህርት ቤት"
+      },
+      en: {
+        brandName: "Genete Tsige", brandSubtitle: "St. George Sunday School", backHome: "← Home",
+        visionHeading: "Sunday School Vision",
+        visionText: "To be an institution that produces faithful, morally disciplined, and capable youth who will inherit the nation and the church, serving as a role model for other Sunday schools[cite: 8].",
+        missionHeading: "Sunday School Mission",
+        m1: "To ensure the dogma, canon, and tradition of the Ethiopian Orthodox Tewahedo Church are passed down purely from generation to generation.",
+        m2: "To enable church followers, especially the youth, to know the church's dogma, canon, tradition, history, culture, and wisdom.",
+        m3: "To teach spiritual values, provide wholesome ministry, and prepare youth to be future custodians of the nation and church.",
+        m4: "To nurture a morally upright generation that serves as a role model to the wider community[cite: 8].",
+        m5: "To support spiritual youth in overcoming challenges in education, work, and social life through solidarity and faith.",
+        footerText: "© 2026 Menegecha Genete Tsige St. George Sunday School"
+      },
+      om: {
+        brandName: "Genete Tsige", brandSubtitle: "Mana Amantaa Qulqulluu Giyoorgis", backHome: "← Karaa Duuba",
+        visionHeading: "Mul'ata Mana Barumsa Sabatichaa (Vision)",
+        visionText: "Manneen barnoota sabataa biroof fakkeenya kan ta'an, amantii fi naamusaan kan ciman, dhaloota biyyaa fi mana amantaa dhaaluu danda'an horachuu dha.",
+        missionHeading: "Ergama Mana Barumsa Sabatichaa (Mission)",
+        m1: "Dogmaa, qajeelchaa fi duudhaa Waldaa Ortodoksii Tawaahido Itoophiyaa dhalootaa dhalootatti akka darbu taasisuu[cite: 8].",
+        m2: "Hordoftoonni mana amantaa hundumtuu keessattuu dhalootni dargaggeessaa dogmaa, seenaa fi duudhaa amantichaa akka beekani taasisuu.",
+        m3: "Dargaggoota hafuuraa mana barnoota sabataatti gurmaa'an qaama tajaajila hafuuraa kennuu fi dhaloota boruu ta'anii akka bahan taasisuu.",
+        m4: "Naamusaan kan qaxaramee fi hawaasaaf fakkeenya kan ta'u dhaloota horachuu[cite: 8].",
+        m5: "Dargaggoonni hafuuraa barumsa, hojii fi jireenya hawaasummaa keessatti rakkoolee mudatan hafuuraan akka mo'an gargaaruu.",
+        footerText: "© 2026 Mana Barumsa Sabataa Minagechaa Genete Tsige Qulqulluu Giyoorgis"
+      },
+      ti: {
+        brandName: "ገነተ ጽጌ", brandSubtitle: "ቅዱስ ጊዮርጊስ ሰንበት ትምህርቲ ቤት", backHome: "← መመለሲ",
+        visionHeading: "ራእይ ሰንበት ትምህርቲ ቤት (Vision)",
+        visionText: "ንኻልኦት ሰንበት ትምህርቲ ኣባላት መርኣያ ዝኾኑ ብሃይማኖትን ስነ-ምግባርን የታነጹ ሃገርን ቤተክርስቲያንን ዝወርሱ መንእሰያት መፍረዪ ትካል ምዃን እዩ።",
+        missionHeading: "ተልእኮ ሰንበት ትምህርቲ ቤት (Mission)",
+        m1: "ዶግማ፣ ቀኖናን ትውፊትን ቤተ ክርስቲያን ተዋሕዶ ኦርቶዶክስ ኢትዮጵያ ከይተበላሸወ ካብ ትውልዲ ናብ ትውልዲ ክመሓላለፍ ግደ ምውጻእ።",
+        m2: "ዝኾነ ሰዓቢ ቤተ ክርስቲያን ብፍላይ መንእሰይ ትውልዲ ዶግማ፣ ቀኖና፣ ታሪኽን ባህልን ቤተ ክርስቲያን ክፈልጥ ምግባር[cite: 8]።",
+        m3: "መንፈሳውያን መንእሰያት ኣብ ሰንበት ትምህርቲ ቤት ተወዲቦም ቃል እግዚአብሔር ክመሃሩን መንፈሳዊ ኣገልግሎት ክህቡን ምግባር።",
+        m4: "ብሥነ-ምግባር ዝታነጸ ንኻልኦት ሕብረተሰብ መርኣያ ዝኾነ ትውልዲ ምፍራይ[cite: 8]።",
+        m5: "መንፈሳውያን መንእሰያት ኣብ ትምህርቲ፣ ስራሕን ማሕበራዊ ህይወትን ንዝገጥሞም ብድሆታት ብመንፈሳውነት ክዋጽእዎ ምግባር።",
+        footerText: "© 2026 መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ሰንበት ትምህርቲ ቤት"
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.documentElement.lang = lang;
+      const t = translations[lang];
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if(t[key]) el.textContent = t[key];
+      });
+    }
+  </script>
+</body>
+</html>

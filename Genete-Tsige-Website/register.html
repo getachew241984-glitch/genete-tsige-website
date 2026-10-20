@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Student Registration - Menegecha Genete Tsige St. George Sunday School." />
+  <meta name="theme-color" content="#641e32" />
+  <title data-i18n="regTitle">ተማሪዎች መመዝገቢያ | መናገሻ ገነተ ጽጌ ሰንበት ትምህርት ቤት</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --burgundy: #641e32;
+      --gold: #c6a04a;
+      --cream: #faf8f4;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Noto Sans Ethiopic", "Nyala", sans-serif;
+      background: var(--cream);
+    }
+    .focus-ring:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  </style>
+</head>
+
+<body class="text-gray-800">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-8">
+      <a href="index.html" class="flex items-center gap-2.5 focus-ring rounded-lg shrink-0">
+        <img
+          src="logo.png"
+          alt="አርማ"
+          class="h-10 w-10 sm:h-12 sm:w-12 object-contain rounded-full border border-stone-200"
+          onerror="this.style.display='none'; document.getElementById('logoFallback').classList.remove('hidden');"
+        />
+        <div id="logoFallback" class="hidden flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-amber-600 bg-rose-950 text-base text-amber-300 md:h-12 md:w-12">
+          ✝
+        </div>
+        <div>
+          <h1 class="font-bold text-rose-950 text-base md:text-xl" data-i18n="brandName">ገነተ ጽጌ</h1>
+          <p class="text-[10px] text-gray-600 font-medium sm:text-xs" data-i18n="brandSubtitle">ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት</p>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <!-- MULTI-LANGUAGE DROPDOWN -->
+        <div class="relative group">
+          <button type="button" class="focus-ring flex items-center gap-1 rounded-lg border border-amber-600 bg-amber-50/50 px-2.5 py-1 text-xs font-bold text-rose-950 hover:bg-amber-100 transition">
+            <span id="currentLangLabel">🇪🇹 አማርኛ</span>
+            <span class="text-[10px]">▾</span>
+          </button>
+          <div class="hidden group-hover:flex absolute right-0 top-full w-36 flex-col rounded-lg bg-white shadow-xl border border-stone-100 py-1.5 z-50">
+            <button onclick="changeLanguage('am')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🇪🇹 አማርኛ</button>
+            <button onclick="changeLanguage('en')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🇬🇧 English</button>
+            <button onclick="changeLanguage('om')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🌳 Afaan Oromoo</button>
+            <button onclick="changeLanguage('ti')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🏔️ ትግርኛ</button>
+          </div>
+        </div>
+
+        <a href="index.html" class="focus-ring rounded-lg border border-rose-950 px-4 py-2 text-xs font-bold text-rose-950 hover:bg-rose-50 transition" data-i18n="backHome">
+          &larr; ወደ ዋናው ገጽ ተመለስ
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT - REGISTRATION FORM -->
+  <main class="mx-auto max-w-4xl px-6 py-12 md:py-16">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-amber-700 font-semibold uppercase tracking-wider text-xs bg-amber-100 px-3 py-1 rounded-full" data-i18n="regBadge">አዲስ ተማሪዎች ምዝገባ</span>
+      <h2 class="text-3xl font-extrabold text-rose-950 mt-3" data-i18n="regHeading">የሰንበት ትምህርት ቤት አዲስ ተማሪዎች መመዝገቢያ ፎርም</h2>
+      <p class="text-gray-600 mt-2 text-sm" data-i18n="regSubtext">እባክዎ የሚከተሉትን ሁሉንም የግል፣ የትምህርት፣ የአድራሻ እና የመንፈሳዊ መረጃዎች በትክክል በመሙላት ቅጹን ያስገቡ።</p>
+    </div>
+
+    <form class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-stone-200 space-y-8" onsubmit="event.preventDefault(); alert(translations[currentLanguage].successMsg);">
+      
+      <!-- 1. የግል መረጃዎች -->
+      <div>
+        <h3 class="text-lg font-bold text-rose-950 border-b pb-2 mb-4" data-i18n="sec1Title">1. የግል መረጃዎች</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblFullName">ሙሉ ስም (ከአባት እና ከአያት ስም ጋር) *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ ማህደር ጌታቸው..." />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblChristianName">የክርስትና ስም *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ ወልደ ማርያም / ወለተ ማርያም" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblDob">የተወለዱበት ዘመን (ቀን/ወር/ዓ.ም) *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ 01/06/1998 ዓ.ም" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblGender">ጾታ *</label>
+            <select class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring">
+              <option value="male" data-i18n="optMale">ወንድ</option>
+              <option value="female" data-i18n="optFemale">ሴት</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblMarital">የጋብቻ ሁኔታ *</label>
+            <select class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring">
+              <option value="single" data-i18n="optSingle">ያላገባ / ያላገባች</option>
+              <option value="married" data-i18n="optMarried">ያገባ / ያገባች</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblPhone">ስልክ ቁጥር *</label>
+            <input type="tel" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ +251-9xxxxxxxx" />
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblEmail">የኢሜል አድራሻ (ካለ)</label>
+            <input type="email" class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ example@gmail.com" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. የመኖሪያ አድራሻ -->
+      <div class="pt-2">
+        <h3 class="text-lg font-bold text-rose-950 border-b pb-2 mb-4" data-i18n="sec2Title">2. የመኖሪያ አድራሻ</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="md:col-span-3">
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblAddress">የመኖሪያ አድራሻ (ክፍለ-ከተማ፣ ወረዳ፣ የቤት ቁጥር) *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ አራዳ፣ ወረዳ 01፣ ቤት ቁጥር 123" />
+          </div>
+          <div class="md:col-span-3">
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblEmergency">የቅርብ ተጠሪ ስም እና ስልክ ቁጥር *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ አቶ ጌታቸው (አባት) - +251-9xxxxxxxx" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. የትምህርት እና የሥራ መረጃ -->
+      <div class="pt-2">
+        <h3 class="text-lg font-bold text-rose-950 border-b pb-2 mb-4" data-i18n="sec3Title">3. የትምህርት እና የሥራ መረጃ</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblField">የተሰማሩበት የትምህርት መስክ *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ ግራፊክ ዲዛይን / ቴክኖሎጂ / አካውንቲንግ..." />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblAcrdLevel">የአካዳሚክ ትምህርት ደረጃ *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ ዲግሪ / ዲፕሎማ / 12ኛ ክፍል..." />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblWorkStatus">የሥራ ሁኔታ (ተማሪ/ሠራተኛ) *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ ሠራተኛ (ምክትል ማናጀር)" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblJobTitle">የሥራ መደብ (ሠራተኛ ከሆኑ)</label>
+            <input type="text" class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ የጋርመንት ኢንተርፕራይዝ ም/ማናጀር" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. የመንፈሳዊ ሕይወት እና አገልግሎት መረጃ -->
+      <div class="pt-2">
+        <h3 class="text-lg font-bold text-rose-950 border-b pb-2 mb-4" data-i18n="sec4Title">4. የመንፈሳዊ ሕይወት እና አገልግሎት መረጃ</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblSpirLevel">የመንፈሳዊ ትምህርት ደረጃ *</label>
+            <select class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring">
+              <option value="beginner" data-i18n="optBeginner">ጀማሪ</option>
+              <option value="intermediate" data-i18n="optIntermediate">መካከለኛ</option>
+              <option value="advanced" data-i18n="optAdvanced">ከፍተኛ</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblRegType">የምዝገባ ዓይነት *</label>
+            <select class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring">
+              <option value="day" data-i18n="optDay">የቀን መርሃ-ግብር</option>
+              <option value="eve" data-i18n="optEve">የማታ መርሃ-ግብር</option>
+              <option value="dist" data-i18n="optDist">የርቀት ትምህርት</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblConfFather">የንስሐ አባት ስም *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ መጋቤ አዲስ..." />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblConfChurch">የንስሐ አባት የሚገኙበት ደብር *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblPrevMember">ከዚህ ቀደም በሰንበት ት/ቤት አባል ነበሩ? *</label>
+            <select class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring">
+              <option value="yes" data-i18n="optYes">አዎን</option>
+              <option value="no" data-i18n="optNo">አይደለሁም</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblPrevService">ካሉ በምን አገልግሎት?</label>
+            <input type="text" class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ በመዝሙር / በኪነ-ጥበብ..." />
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblSkills">ልዩ ተሰጥኦ / ክህሎት (ለምሳሌ፦ ሥነ-ጽሑፍ፣ ዝማሬ፣ ቴክኒክ...)</label>
+            <input type="text" class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ ግራፊክ ዲዛይን፣ ቪዲዮ ኤዲቲንግ፣ ሥነ-ጽሑፍ..." />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblNearbyChurch">በአቀራቢያዎ ያለ ቤተክርስቲያን (ደብር) *</label>
+            <input type="text" required class="w-full rounded-lg border border-stone-300 p-2.5 text-sm focus-ring" placeholder="ምሳሌ፦ መናገሻ ገነተ ጽጌ ቅ/ጊዮርጊስ" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblPhoto">ፎቶግራፍ (የቅርብ ጊዜ ፎቶዎን እዚህ ጋር ይጫኑ) *</label>
+            <input type="file" accept="image/*" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-100 file:text-rose-950 hover:file:bg-amber-200" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMIT BUTTON -->
+      <div class="pt-6 text-center">
+        <button type="submit" class="w-full md:w-auto bg-rose-950 hover:bg-rose-900 text-amber-300 font-bold py-4 px-10 rounded-xl shadow-md transition duration-200 text-base" data-i18n="submitBtn">
+          ምዝገባውን ያስገቡ 📥
+        </button>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#3a101f] px-6 py-6 text-center text-sm text-gray-300 mt-20">
+    <p data-i18n="footerText">© 2026 የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን ሰንበት ትምህርት ቤት</p>
+  </footer>
+
+  <!-- MULTI-LANGUAGE SCRIPT -->
+  <script>
+    let currentLanguage = "am";
+
+    const translations = {
+      am: {
+        regTitle: "ተማሪዎች መመዝገቢያ | መናገሻ ገነተ ጽጌ ሰንበት ትምህርት ቤት",
+        brandName: "ገነተ ጽጌ",
+        brandSubtitle: "ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት",
+        backHome: "← ወደ ዋናው ገጽ ተመለስ",
+        regBadge: "አዲስ ተማሪዎች ምዝገባ",
+        regHeading: "የሰንበት ትምህርት ቤት አዲስ ተማሪዎች መመዝገቢያ ፎርም",
+        regSubtext: "እባክዎ የሚከተሉትን ሁሉንም የግል፣ የትምህርት፣ የአድራሻ እና የመንፈሳዊ መረጃዎች በትክክል በመሙላት ቅጹን ያስገቡ።",
+        sec1Title: "1. የግል መረጃዎች",
+        lblFullName: "ሙሉ ስም (ከአባት እና ከአያት ስም ጋር) *",
+        lblChristianName: "የክርስትና ስም *",
+        lblDob: "የተወለዱበት ዘመን (ቀን/ወር/ዓ.ም) *",
+        lblGender: "ጾታ *",
+        optMale: "ወንድ",
+        optFemale: "ሴት",
+        lblMarital: "የጋብቻ ሁኔታ *",
+        optSingle: "ያላገባ / ያላገባች",
+        optMarried: "ያገባ / ያገባች",
+        lblPhone: "ስልክ ቁጥር *",
+        lblEmail: "የኢሜል አድራሻ (ካለ)",
+        sec2Title: "2. የመኖሪያ አድራሻ",
+        lblAddress: "የመኖሪያ አድራሻ (ክፍለ-ከተማ፣ ወረዳ፣ የቤት ቁጥር) *",
+        lblEmergency: "የቅርብ ተጠሪ ስም እና ስልክ ቁጥር *",
+        sec3Title: "3. የትምህርት እና የሥራ መረጃ",
+        lblField: "የተሰማሩበት የትምህርት መስክ *",
+        lblAcrdLevel: "የአካዳሚክ ትምህርት ደረጃ *",
+        lblWorkStatus: "የሥራ ሁኔታ (ተማሪ/ሠራተኛ) *",
+        lblJobTitle: "የሥራ መደብ (ሠራተኛ ከሆኑ)",
+        sec4Title: "4. የመንፈሳዊ ሕይወት እና አገልግሎት መረጃ",
+        lblSpirLevel: "የመንፈሳዊ ትምህርት ደረጃ *",
+        optBeginner: "ጀማሪ",
+        optIntermediate: "መካከለኛ",
+        optAdvanced: "ከፍተኛ",
+        lblRegType: "የምዝገባ ዓይነት *",
+        optDay: "የቀን መርሃ-ግብር",
+        optEve: "የማታ መርሃ-ግብር",
+        optDist: "የርቀት ትምህርት",
+        lblConfFather: "የንስሐ አባት ስም *",
+        lblConfChurch: "የንስሐ አባት የሚገኙበት ደብር *",
+        lblPrevMember: "ከዚህ ቀደም በሰንበት ት/ቤት አባል ነበሩ? *",
+        optYes: "አዎን",
+        optNo: "አይደለሁም",
+        lblPrevService: "ካሉ በምን አገልግሎት?",
+        lblSkills: "ልዩ ተሰጥኦ / ክህሎት (ለምሳሌ፦ ሥነ-ጽሑፍ፣ ዝማሬ፣ ቴክኒክ...)",
+        lblNearbyChurch: "በአቀራቢያዎ ያለ ቤተክርስቲያን (ደብር) *",
+        lblPhoto: "ፎቶግራፍ (የቅርብ ጊዜ ፎቶዎን እዚህ ጋር ይጫኑ) *",
+        submitBtn: "ምዝገባውን ያስገቡ 📥",
+        footerText: "© 2019 የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን ሰንበት ትምህርት ቤት",
+        successMsg: "ምዝገባዎ በተ his ም ተሳክቷል! እናመሰግናለን።"
+      },
+      en: {
+        regTitle: "Student Registration | Menagesha Genete Tsige Sunday School",
+        brandName: "Genete Tsige",
+        brandSubtitle: "St. George Sunday School",
+        backHome: "← Back to Home Page",
+        regBadge: "NEW STUDENT REGISTRATION",
+        regHeading: "Sunday School New Student Registration Form",
+        regSubtext: "Please accurately fill in all personal, educational, address, and spiritual information.",
+        sec1Title: "1. Personal Information",
+        lblFullName: "Full Name (including Father's & Grandfather's Name) *",
+        lblChristianName: "Baptismal Name *",
+        lblDob: "Date of Birth (DD/MM/YYYY) *",
+        lblGender: "Gender *",
+        optMale: "Male",
+        optFemale: "Female",
+        lblMarital: "Marital Status *",
+        optSingle: "Single",
+        optMarried: "Married",
+        lblPhone: "Phone Number *",
+        lblEmail: "Email Address (if any)",
+        sec2Title: "2. Residential Address",
+        lblAddress: "Address (Sub-city, Woreda, House No.) *",
+        lblEmergency: "Emergency Contact Name & Phone *",
+        sec3Title: "3. Educational & Work Information",
+        lblField: "Field of Study *",
+        lblAcrdLevel: "Academic Level *",
+        lblWorkStatus: "Work Status (Student/Employee) *",
+        lblJobTitle: "Job Position (if employed)",
+        sec4Title: "4. Spiritual Life & Service Information",
+        lblSpirLevel: "Spiritual Education Level *",
+        optBeginner: "Beginner",
+        optIntermediate: "Intermediate",
+        optAdvanced: "Advanced",
+        lblRegType: "Registration Type *",
+        optDay: "Day Program",
+        optEve: "Evening Program",
+        optDist: "Distance Learning",
+        lblConfFather: "Father Confessor's Name *",
+        lblConfChurch: "Father Confessor's Church *",
+        lblPrevMember: "Were you a Sunday School member before? *",
+        optYes: "Yes",
+        optNo: "No",
+        lblPrevService: "If yes, in which department?",
+        lblSkills: "Special Skills/Talents (e.g., Writing, Hymns, Tech...)",
+        lblNearbyChurch: "Nearest Church (Debre) *",
+        lblPhoto: "Photograph (Upload recent photo) *",
+        submitBtn: "Submit Registration 📥",
+        footerText: "© 2026 Menagesha Genete Tsige St. George Sunday School",
+        successMsg: "Your registration was successful! Thank you."
+      },
+      om: {
+        regTitle: "Galmeessa Barattootaa | Managasha Ganata Tsigge",
+        brandName: "Ganata Tsigge",
+        brandSubtitle: "Mana Barnoota Dilbata Qulqulluu Gyoorgis",
+        backHome: "← Gara Fuula Duraatti Deebi'aa",
+        regBadge: "GALMEESSA BARATTOOTA HAARAA",
+        regHeading: "Guca Galmee Barattoota Haaraa Mana Barnoota Dilbata",
+        regSubtext: "Odeeffannoo dhuunfaa, barnootaa, teessoo fi afuuraa sirriitti guutuun galcheessaa.",
+        sec1Title: "1. Odeeffannoo Dhuunfaa",
+        lblFullName: "Maqaa Guutuu (Maqaa Abbaa fi Akaakayyuu Dabalatee) *",
+        lblChristianName: "Maqaa Cirstaanummaa *",
+        lblDob: "Barri Dhalootaa (Guyyaa/Ji'a/Bara) *",
+        lblGender: "Kornayaa *",
+        optMale: "Dhiira",
+        optFemale: "Dhalaa",
+        lblMarital: "Haala Fuudha fi Heerumaa *",
+        optSingle: "Kan Hin Fuune/Heerumne",
+        optMarried: "Kan Fuudhe/Heerumte",
+        lblPhone: "Lakk. Bilbilaa *",
+        lblEmail: "Teessoo Imeelii (Yoo jiraate)",
+        sec2Title: "2. Teessoo Manaa",
+        lblAddress: "Teessoo Manaa (Kutaa-Magaalaa, Aanaa, Lakk. Manaa) *",
+        lblEmergency: "Maqaa fi Lakk. Bilbilaa Nama Dhiyootti Waamamu *",
+        sec3Title: "3. Odeeffannoo Barnoota fi Hojii",
+        lblField: "Gosa Barnoota Irra Jirtan *",
+        lblAcrdLevel: "Sadarkaa Barnoota Akaadamiikii *",
+        lblWorkStatus: "Haala Hojii (Barataa/Hojjetaa) *",
+        lblJobTitle: "Gita Hojii (Hojjetaa yoo taatan)",
+        sec4Title: "4. Odeeffannoo Jireenya Afuuraa fi Tajaajilaa",
+        lblSpirLevel: "Sadarkaa Barnoota Afuuraa *",
+        optBeginner: "Jalqabaa",
+        optIntermediate: "Giddu-galeessa",
+        optAdvanced: "Olaanaa",
+        lblRegType: "Gosa Galmee *",
+        optDay: "Sagantaa Guyyaa",
+        optEve: "Sagantaa Galgalaa",
+        optDist: "Barnoota Fageenyaa",
+        lblConfFather: "Maqaa Abbaa Qalbii *",
+        lblConfChurch: "Mana Krestaana Abbaa Qalbii *",
+        lblPrevMember: "Kanaan dura miseensa Mana Barnoota Dilbata turteedhaa?? *",
+        optYes: "Eeyyee",
+        optNo: "Lakkii",
+        lblPrevService: "Yoo ta'e tajaajila kamiin?",
+        lblSkills: "Cimina/Kukkuulchina Addaa (fakkeenyaaf: Barreeffama, Faarfannaa...)",
+        lblNearbyChurch: "Mana Krestaana Dhiyootti Argamu *",
+        lblPhoto: "Suuraa (Suuraa keessan dhiyootti ka'ame asitti olfe'aa) *",
+        submitBtn: "Galmee Galchaa 📥",
+        footerText: "© 2019 Mana Barnoota Dilbata Managasha Ganata Tsigge Qulqulluu Gyoorgis",
+        successMsg: "Galmeen keessan milkaa'inaan raawwatameera! Galatoomaa."
+      },
+      ti: {
+        regTitle: "ምዝገባ ተመሃሮ | መናገሻ ገነተ ጽጌ ቤት ትምህርቲ ሰንበት",
+        brandName: "ገነተ ጽጌ",
+        brandSubtitle: "ቤት ትምህርቲ ሰንበት ቅዱስ ጊዮርጊስ",
+        backHome: "← ናብ ዋና ገጽ ተመለስ",
+        regBadge: "ምዝገባ ሓደስቲ ተመሃሮ",
+        regHeading: "ምዝገባ ሓደስቲ ተመሃሮ ቤት ትምህርቲ ሰንበት",
+        regSubtext: "በጃኹም ኩሎም ናይ ግሊ፣ ትምህርቲ፣ ኣድራሻን መንፈሳዊን ሓበሬታታት ብትክክል ብምምላእ የእትዉ።",
+        sec1Title: "1. ናይ ግሊ ሓበሬታ",
+        lblFullName: "ምሉእ ስም (ምስ ስም ኣቦን ኣቦሓጎን) *",
+        lblChristianName: "ስም ክርስትና *",
+        lblDob: "ዕለት ልደት (መዓልቲ/ወርሒ/ዓ.ም) *",
+        lblGender: "ፆታ *",
+        optMale: "ወዲ",
+        optFemale: "ጓል",
+        lblMarital: "ኩነታት ሓዳር *",
+        optSingle: "ዘየእተወ / ዘየእተወት",
+        optMarried: "ዘእተወ / ዘእተወት",
+        lblPhone: "ቁፅሪ ስልኪ *",
+        lblEmail: "ኢሜይል ኣድራሻ (እንተሃልዩ)",
+        sec2Title: "2. ኣድራሻ መበገሲ",
+        lblAddress: "ኣድራሻ መበገሲ (ክፍለ-ከተማ፣ ወረዳ፣ ቁፅሪ ገዛ) *",
+        lblEmergency: "ስምን ቁፅሪ ስልክን ቀረባ ተጸዋዒ *",
+        sec3Title: "3. ሓበሬታ ትምህርትን ስራሕን",
+        lblField: "ዝተዋፈሩሉ ዓውዲ ትምህርቲ *",
+        lblAcrdLevel: "ደረጃ ኣካዳሚክ ትምህርቲ *",
+        lblWorkStatus: "ኩነታት ስራሕ (ተመሃራይ/ሰራሕተኛ) *",
+        lblJobTitle: "መደብ ስራሕ (ሰራሕተኛ እንተኾይኖም)",
+        sec4Title: "4. ሓበሬታ መንፈሳዊ ሕይወትን ኣገልግሎትን",
+        lblSpirLevel: "ደረጃ መንፈሳዊ ትምህርቲ *",
+        optBeginner: "ጀማሪ",
+        optIntermediate: "ማእከላይ",
+        optAdvanced: "ላዕለዋይ",
+        lblRegType: "ዓይነት ምዝገባ *",
+        optDay: "መደብ መዓልቲ",
+        optEve: "መደብ ምሸት",
+        optDist: "ትምህርቲ ርሕቀት",
+        lblConfFather: "ስም ኣቦ ንስሓ *",
+        lblConfChurch: "ደብር ኣቦ ንስሓ *",
+        lblPrevMember: "ቅድሚ ሕጂ ኣባል ቤት ትምህርቲ ሰንበት ነይርኩም? *",
+        optYes: "እወ",
+        optNo: "አይነበርኩን",
+        lblPrevService: "እንተነይርኩም ብምንታይ ኣገልግሎት?",
+        lblSkills: "ልዩ ህያብ / ክእለት (ንኣብነት፦ ስነ-ጽሑፍ፣ መዝሙር...)",
+        lblNearbyChurch: "ኣብ ቀረባኹም ዘሎ ቤተክርስቲያን *",
+        lblPhoto: "ፎቶግራፍ (ናይ ቀረባ እዋን ፎቶ ኣብዚ የእትዉ) *",
+        submitBtn: "ምዝገባ የእትዉ 📥",
+        footerText: "© 2019 ቤት ትምህርቲ ሰንበት መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ",
+        successMsg: "ምዝገባኹም ብዓወት ተፈጺሙ እዩ! የ his ንየልና።"
+      }
+    };
+
+    const langLabelsMap = {
+      am: "🇪🇹 አማርኛ",
+      en: "🇬🇧 English",
+      om: "🌳 Afaan Oromoo",
+      ti: "🏔️ ትግርኛ"
+    };
+
+    function changeLanguage(langCode) {
+      if (!translations[langCode]) return;
+
+      currentLanguage = langCode;
+      localStorage.setItem("preferredLang", langCode);
+      document.documentElement.lang = langCode;
+
+      // Update Header Button Label
+      const labelEl = document.getElementById("currentLangLabel");
+      if (labelEl) labelEl.textContent = langLabelsMap[langCode] || "🇪🇹 አማርኛ";
+
+      // Translate all elements with data-i18n attribute
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        const translationText = translations[langCode]?.[key];
+
+        if (translationText) {
+          element.textContent = translationText;
+        }
+      });
+    }
+
+    // Initialize Language on Page Load
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("preferredLang") || "am";
+      changeLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>

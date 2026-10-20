@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="am" dir="ltr">
+<<meta name="google-site-verification" content="_Lrrzu1KsWu7TVskpEMlNe7zZJzBDDRRFHBuQgUsrM8" />>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Menagesha Genete Tsige St. George Sunday School — Official Website & Learning Portal." />
+  <meta name="theme-color" content="#641e32" />
+  <title data-i18n="pageTitle">መናገሻ ገነተ ጽጌ | ሰንበት ትምህርት ቤት</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --burgundy: #641e32;
+      --gold: #c6a04a;
+      --cream: #faf8f4;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      font-family: "Noto Sans Ethiopic", "Nyala", sans-serif;
+      background: var(--cream);
+    }
+    .hero-gradient {
+      background: linear-gradient(90deg, rgba(58, 10, 24, 0.90) 0%, rgba(100, 30, 50, 0.65) 50%, rgba(58, 10, 24, 0.35) 100%);
+    }
+    .focus-ring:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  </style>
+</head>
+
+<body class="text-gray-800 relative">
+
+  <!-- HEADER NAVIGATION -->
+  <header class="sticky top-0 z-50 bg-white shadow-md border-b border-stone-200">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-8">
+      
+      <!-- LOGO AND BRAND NAME -->
+      <a href="index.html" class="flex min-w-0 items-center gap-2.5 focus-ring rounded-lg shrink-0">
+        <img
+          src="logo.png"
+          alt="አርማ"
+          class="h-11 w-11 shrink-0 rounded-full object-cover bg-white shadow-sm border border-stone-200 md:h-14 md:w-14"
+          onerror="this.style.display='none'; document.getElementById('logoFallback').classList.remove('hidden');"
+        />
+        <div id="logoFallback" class="hidden flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-amber-600 bg-rose-950 text-lg text-amber-300 md:h-14 md:w-14">
+          ✝
+        </div>
+        <div class="min-w-0">
+          <h1 class="truncate font-bold text-rose-950 text-base md:text-xl" data-i18n="brandName">መናገሻ ገነተ ጽጌ</h1>
+          <p class="truncate text-[10px] text-gray-600 font-medium sm:text-xs" data-i18n="brandSubtitle">ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት</p>
+        </div>
+      </a>
+
+      <!-- MOBILE CONTROLS -->
+      <div class="flex items-center gap-2 md:hidden">
+        <select id="mobileLangSelect" onchange="changeLanguage(this.value)" class="focus-ring rounded border border-amber-600 bg-white px-2 py-1 text-xs font-semibold text-rose-950">
+          <option value="am">አማርኛ</option>
+          <option value="en">English</option>
+          <option value="om">Afaan Oromoo</option>
+          <option value="ti">ትግርኛ</option>
+        </select>
+        <button id="menuButton" type="button" class="focus-ring rounded border border-gray-300 px-2.5 py-1 text-base text-gray-700">☰</button>
+      </div>
+
+      <!-- MAIN NAVIGATION MENU -->
+      <nav id="mainMenu" class="absolute left-0 right-0 top-full hidden flex-col gap-2 border-t bg-white p-5 shadow-lg md:static md:flex md:flex-row md:items-center md:gap-4 md:border-0 md:p-0 md:shadow-none">
+        
+        <a href="index.html" class="font-semibold text-gray-800 hover:text-amber-700 transition text-sm" data-i18n="navHome">መነሻ</a>
+
+        <!-- LATEST DROPDOWN -->
+        <div class="relative group">
+          <button class="flex items-center gap-1 font-semibold text-gray-800 hover:text-amber-700 transition py-1 text-sm">
+            <span data-i18n="navLatest">ወቅታዊ</span>
+            <span class="text-xs">▾</span>
+          </button>
+          <div class="hidden group-hover:flex md:absolute left-0 top-full w-52 flex-col rounded-lg bg-white shadow-xl border border-stone-100 py-2 z-50">
+            <a href="#news" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-stone-50 hover:text-rose-950" data-i18n="subNews">ማስታወቂያዎች</a>
+            <a href="magazine.html" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-stone-50 hover:text-rose-950" data-i18n="subEvents">አበይት ዜናዎች</a>
+          </div>
+        </div>
+
+        <!-- ABOUT US DROPDOWN -->
+        <div class="relative group">
+          <button class="flex items-center gap-1 font-semibold text-gray-800 hover:text-amber-700 transition py-1 text-sm">
+            <span data-i18n="navAbout">ስለ እኛ</span>
+            <span class="text-xs">▾</span>
+          </button>
+          <div class="hidden group-hover:flex md:absolute left-0 top-full w-56 flex-col rounded-lg bg-white shadow-xl border border-stone-100 py-2 z-50">
+            <a href="history.html" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-stone-50 hover:text-rose-950" data-i18n="navHistory">የሰ/ት/ቤቱ ታሪክ</a>
+            <a href="vision_mission.html" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-stone-50 hover:text-rose-950" data-i18n="navVision">ራዕይ እና ተልዕኮ</a>
+            <a href="departments.html" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-stone-50 hover:text-rose-950" data-i18n="navDepartments">የአገልግሎት መዋቅርና ክፍሎች</a>
+          </div>
+        </div>
+
+        <!-- EDUCATION DROPDOWN (ከቀዳማይ እስከ ራብዓይ) -->
+        <div class="relative group">
+          <a href="curriculum.html?shift=day" class="flex items-center gap-1 font-semibold text-gray-800 hover:text-amber-700 transition py-1 text-sm">
+            <span data-i18n="navPrograms">ትምህርት</span>
+            <span class="text-xs">▾</span>
+          </a>
+          <div class="hidden group-hover:flex md:absolute left-0 top-full w-64 flex-col rounded-lg bg-white shadow-xl border border-stone-100 py-2 z-50">
+            <a href="curriculum.html?shift=day" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950" data-i18n="dayProgramTitle">☀️ የቀን መርሃ-ግብር (ከቀዳማይ እስከ ራብዓይ)</a>
+            <a href="curriculum.html?shift=evening" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950" data-i18n="eveProgramTitle">🌙 የማታ መርሃ-ግብር (ከቀዳማይ እስከ ራብዓይ)</a>
+            <a href="curriculum.html?shift=distance" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950" data-i18n="distProgramTitle">📡 የርቀት ትምህርት</a>
+            <a href="curriculum.html" class="px-4 py-2 text-xs font-semibold text-amber-800 hover:bg-amber-50 hover:text-rose-950 border-t border-stone-100 mt-1" data-i18n="currSyllabus">📚 ሥርዓተ ትምህርት (Syllabus)</a>
+          </div>
+        </div>
+
+        <a href="magazine.html" class="font-semibold text-gray-800 hover:text-amber-700 transition text-sm" data-i18n="navMagazine">መጽሔት</a>
+
+        <!-- SERVICES DROPDOWN -->
+        <div class="relative group">
+          <button class="flex items-center gap-1 font-semibold text-gray-800 hover:text-amber-700 transition py-1 text-sm">
+            <span data-i18n="navServices">አገልግሎቶች</span>
+            <span class="text-xs">▾</span>
+          </button>
+          <div class="hidden group-hover:flex md:absolute left-0 top-full w-56 flex-col rounded-lg bg-white shadow-xl border border-stone-100 py-2 z-50">
+            <a href="register.html" class="px-4 py-2 text-xs font-semibold text-amber-800 hover:bg-amber-50 hover:text-rose-950" data-i18n="navRegister">📝 ተማሪዎች መመዝገቢያ</a>
+            <a href="results.html" class="px-4 py-2 text-xs font-semibold text-rose-950 hover:bg-amber-50 hover:text-rose-950" data-i18n="navResults">📊 ውጤት መመልከቻ</a>
+            <a href="#gallery" class="px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-stone-50 hover:text-rose-950" data-i18n="navGallery">📷 ፎቶ ማዕከል</a>
+          </div>
+        </div>
+        
+        <!-- DESKTOP MULTI-LANGUAGE DROPDOWN -->
+        <div class="hidden md:block relative group">
+          <button type="button" class="focus-ring flex items-center gap-1 rounded-lg border border-amber-600 bg-amber-50/50 px-2.5 py-1 text-xs font-bold text-rose-950 hover:bg-amber-100 transition">
+            <span id="currentLangLabel">🇪🇹 አማርኛ</span>
+            <span class="text-[10px]">▾</span>
+          </button>
+          <div class="hidden group-hover:flex absolute right-0 top-full w-36 flex-col rounded-lg bg-white shadow-xl border border-stone-100 py-1.5 z-50">
+            <button onclick="changeLanguage('am')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🇪🇹 አማርኛ</button>
+            <button onclick="changeLanguage('en')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🇬🇧 English</button>
+            <button onclick="changeLanguage('om')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🌳 Afaan Oromoo</button>
+            <button onclick="changeLanguage('ti')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🏔️ ትግርኛ</button>
+          </div>
+        </div>
+
+        <!-- SEARCH BUTTON ICON -->
+        <button onclick="openSearchModal()" class="p-2 text-rose-950 hover:text-amber-600 transition" title="ፈልግ">
+          🔍
+        </button>
+
+        <a href="#church-location" class="focus-ring rounded-lg bg-rose-950 px-3.5 py-2 text-center font-bold text-white hover:bg-rose-900 transition text-xs shadow-sm" data-i18n="navContact">ያግኙን</a>
+
+      </nav>
+    </div>
+  </header>
+
+  <!-- FUNCTIONAL SEARCH POPUP MODAL -->
+  <div id="searchModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-start justify-center pt-20 px-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl p-6 border border-amber-300 relative">
+      <div class="flex justify-between items-center mb-4 border-b pb-3">
+        <h3 class="font-bold text-rose-950 text-lg flex items-center gap-2">
+          <span>🔍</span> <span data-i18n="searchTitle">በድረ-ገጹ ውስጥ ይፈልጉ</span>
+        </h3>
+        <button onclick="closeSearchModal()" class="text-gray-400 hover:text-red-600 font-bold text-xl px-2">✕</button>
+      </div>
+      
+      <form onsubmit="handleSearch(event)" class="relative">
+        <input 
+          type="text" 
+          id="searchInput" 
+          onkeyup="liveSearch()" 
+          placeholder="ምሳሌ፦ ምዝገባ፣ ቀዳማይ፣ ግእዝ፣ ታሪክ፣ መጽሔት..." 
+          class="w-full border-2 border-amber-500/50 rounded-xl px-4 py-3 pl-11 text-sm focus:outline-none focus:border-rose-950 shadow-inner"
+        />
+        <span class="absolute left-3.5 top-3.5 text-gray-400 text-lg">🔎</span>
+        <button type="submit" class="absolute right-2 top-2 bg-rose-950 text-amber-300 font-bold text-xs px-4 py-2 rounded-lg hover:bg-rose-900 transition">
+          ፈልግ
+        </button>
+      </form>
+
+      <!-- LIVE SEARCH RESULTS DISPLAY -->
+      <div id="searchResults" class="mt-4 max-h-60 overflow-y-auto space-y-2 text-sm hidden">
+        <!-- Results populated dynamically -->
+      </div>
+
+      <div class="mt-4 text-xs text-gray-500 text-center border-t pt-2" data-i18n="searchHint">
+        የሚፈልጉትን ቃል በመጻፍ በቀጥታ ወደሚፈልጉት ገጽ ይሸጋገሩ።
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- AUTOMATED DYNAMIC HERO CAROUSEL -->
+    <section id="home" class="relative min-h-[520px] md:min-h-[580px] overflow-hidden bg-rose-950">
+      
+      <!-- SLIDE 1 -->
+      <div class="carousel-slide absolute inset-0 transition-all duration-700 opacity-100 z-10">
+        <img src="church-hero.png" alt="መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን" class="absolute inset-0 h-full w-full object-cover object-center" />
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="relative mx-auto flex min-h-[520px] md:min-h-[580px] max-w-7xl items-center px-6 py-20 md:px-12">
+          <div class="max-w-3xl text-white">
+            <p class="mb-3 font-semibold tracking-wide text-amber-300 md:text-lg" data-i18n="heroWelcome">እንኳን በደህና መጡ</p>
+            <h2 class="mb-6 text-3xl font-extrabold leading-tight md:text-5xl drop-shadow-md">
+              <span class="block" data-i18n="heroTitle">መናገሻ ገነተ ጽጌ</span>
+              <span class="block text-amber-300 mt-1" data-i18n="heroSubtitle">ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት</span>
+            </h2>
+            <p class="mb-8 max-w-2xl text-base leading-relaxed text-stone-100 md:text-lg drop-shadow-sm" data-i18n="heroText">የሰንበት ትምህርት ቤታችንን መረጃ፣ ከቀዳማይ እስከ ራብዓይ ያሉ የትምህርት ፕሮግራሞችና ማስታወቂያዎች በዚህ ድረ ገጽ ላይ ያግኙ።</p>
+            <a href="history.html" class="focus-ring inline-block rounded-xl bg-amber-400 px-7 py-3.5 font-bold text-rose-950 shadow-lg hover:bg-amber-300 transition duration-200" data-i18n="heroAboutBtn">ስለ ትምህርት ቤቱ ይወቁ</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="carousel-slide absolute inset-0 transition-all duration-700 opacity-0 z-0">
+        <img src="church-hero.png" alt="የተማሪዎች ምዝገባ" class="absolute inset-0 h-full w-full object-cover object-center filter brightness-50" />
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="relative mx-auto flex min-h-[520px] md:min-h-[580px] max-w-7xl items-center px-6 py-20 md:px-12">
+          <div class="max-w-3xl text-white">
+            <p class="mb-3 font-semibold tracking-wide text-amber-300 md:text-lg" data-i18n="slide2Year">የ2019/2026 የትምህርት ዘመን</p>
+            <h2 class="mb-6 text-3xl font-extrabold leading-tight md:text-5xl drop-shadow-md">
+              <span class="block" data-i18n="slide2Title">አዲስ ተማሪዎች ምዝገባ እና ትምህርት</span>
+              <span class="block text-amber-300 mt-1" data-i18n="slide2Sub">ቀዳማይ፣ ካልኣይ፣ ሣልሳይ እና ራብዓይ</span>
+            </h2>
+            <p class="mb-8 max-w-2xl text-base leading-relaxed text-stone-100 md:text-lg drop-shadow-sm" data-i18n="slide2Text">በመሰረታዊ የሃይማኖት ትምህርት፣ በታሪክ፣ በሥርዓተ ቤተክርስቲያን እና በግእዝ ቋንቋ ከቀዳማይ እስከ ራብዓይ እናስተምራለን።</p>
+            <a href="register.html" class="focus-ring inline-block rounded-xl bg-amber-400 px-7 py-3.5 font-bold text-rose-950 shadow-lg hover:bg-amber-300 transition duration-200" data-i18n="slide2Btn">አሁኑኑ ይመዝገቡ &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="carousel-slide absolute inset-0 transition-all duration-700 opacity-0 z-0">
+        <img src="church-hero.png" alt="የሰሌዳ መጽሔት" class="absolute inset-0 h-full w-full object-cover object-center filter brightness-50" />
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="relative mx-auto flex min-h-[520px] md:min-h-[580px] max-w-7xl items-center px-6 py-20 md:px-12">
+          <div class="max-w-3xl text-white">
+            <p class="mb-3 font-semibold tracking-wide text-amber-300 md:text-lg" data-i18n="slide3SubTitle">መንፈሳዊ ትምህርቶች እና ጽሑፎች</p>
+            <h2 class="mb-6 text-3xl font-extrabold leading-tight md:text-5xl drop-shadow-md">
+              <span class="block" data-i18n="slide3Title">የሰሌዳ መጽሔት </span>
+              <span class="block text-amber-300 mt-1" data-i18n="slide3Sub">ወቅታዊ መንፈሳዊ ጽሑፎችና ግጥሞች</span>
+            </h2>
+            <p class="mb-8 max-w-2xl text-base leading-relaxed text-stone-100 md:text-lg drop-shadow-sm" data-i18n="slide3Text">በቤተክርስቲያናችን የሰሌዳ መጽሔት ላይ የሚወጡ ትምህርቶችን፣ የቅዱሳን ታሪክ እና ግጥሞችን በዲጂታል አማራጭ ያንብቡ።</p>
+            <a href="magazine.html" class="focus-ring inline-block rounded-xl bg-amber-400 px-7 py-3.5 font-bold text-rose-950 shadow-lg hover:bg-amber-300 transition duration-200" data-i18n="slide3Btn">መጽሔት አንብብ &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAROUSEL CONTROLS & DOTS -->
+      <div class="absolute bottom-8 right-8 z-30 flex items-center gap-3 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+        <button onclick="prevSlide()" class="p-1.5 rounded-full text-white hover:bg-white/20 transition" title="ቀደመ">❮</button>
+        <div class="flex gap-2 items-center px-2">
+          <span onclick="goToSlide(0)" class="dot w-3 h-3 rounded-full bg-amber-400 cursor-pointer transition"></span>
+          <span onclick="goToSlide(1)" class="dot w-3 h-3 rounded-full bg-white/50 cursor-pointer transition"></span>
+          <span onclick="goToSlide(2)" class="dot w-3 h-3 rounded-full bg-white/50 cursor-pointer transition"></span>
+        </div>
+        <button onclick="nextSlide()" class="p-1.5 rounded-full text-white hover:bg-white/20 transition" title="ቀጣይ">❯</button>
+      </div>
+
+    </section>
+
+    <!-- BEAUTIFUL STYLED STATISTICS & IMPACT COUNTER SECTION -->
+    <section class="bg-stone-100 py-12 border-b border-stone-300">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="mb-8 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between border-b border-stone-300 pb-4">
+          <div>
+            <p class="text-amber-800 font-bold uppercase tracking-wider text-xs" data-i18n="statEyebrow">የተቋማችን መረጃ</p>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-rose-950 mt-1" data-i18n="statTitle">የሰንበት ትምህርት ቤታችን ታሪካዊ ምዕራፍ በቁጥር</h2>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Card 1: Burgundy Elegance -->
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-rose-900 to-rose-950 text-white shadow-lg border-2 border-amber-400 transform hover:-translate-y-1 transition duration-300">
+            <div class="w-12 h-12 bg-amber-400/20 rounded-xl flex items-center justify-center text-2xl border border-amber-300/40">
+              🏛️
+            </div>
+            <h3 class="text-3xl font-black text-amber-300 mt-4 tracking-wide">1954 E.C.</h3>
+            <p class="text-sm font-bold text-amber-100 mt-1" data-i18n="stat1Title">የተመሰረተበት ዓመት</p>
+            <p class="text-xs text-stone-200 mt-2 leading-relaxed" data-i18n="stat1Sub">ከ 65 ዓመታት በላይ መንፈሳዊ አገልግሎት</p>
+          </div>
+
+          <!-- Card 2: Warm Gold Gradient -->
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-amber-600 to-amber-800 text-white shadow-lg border-2 border-amber-300 transform hover:-translate-y-1 transition duration-300">
+            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl border border-white/30">
+              🎓
+            </div>
+            <h3 class="text-3xl font-black text-white mt-4 tracking-wide">1500+</h3>
+            <p class="text-sm font-bold text-amber-100 mt-1" data-i18n="stat2Title">ንቁ ተማሪዎች</p>
+            <p class="text-xs text-stone-100 mt-2 leading-relaxed" data-i18n="stat2Sub">ከቀዳማይ እስከ ራብዓይ በመማር ላይ ያሉ</p>
+          </div>
+
+          <!-- Card 3: Soft Emerald/Forest Gradient -->
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-emerald-800 to-teal-950 text-white shadow-lg border-2 border-emerald-400/50 transform hover:-translate-y-1 transition duration-300">
+            <div class="w-12 h-12 bg-emerald-400/20 rounded-xl flex items-center justify-center text-2xl border border-emerald-300/40">
+              📚
+            </div>
+            <h3 class="text-3xl font-black text-emerald-200 mt-4 tracking-wide">4</h3>
+            <p class="text-sm font-bold text-emerald-100 mt-1" data-i18n="stat3Title">የክፍል ደረጃዎች</p>
+            <p class="text-xs text-emerald-100/80 mt-2 leading-relaxed" data-i18n="stat3Sub">ቀዳማይ፣ ካልኣይ፣ ሣልሳይ እና ራብዓይ</p>
+          </div>
+
+          <!-- Card 4: Dark Royal Slate -->
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-slate-800 to-stone-900 text-white shadow-lg border-2 border-amber-400/50 transform hover:-translate-y-1 transition duration-300">
+            <div class="w-12 h-12 bg-amber-400/20 rounded-xl flex items-center justify-center text-2xl border border-amber-300/40">
+              👥
+            </div>
+            <h3 class="text-3xl font-black text-amber-300 mt-4 tracking-wide">12+</h3>
+            <p class="text-sm font-bold text-stone-100 mt-1" data-i18n="stat4Title">የአገልግሎት ክፍሎች</p>
+            <p class="text-xs text-stone-300 mt-2 leading-relaxed" data-i18n="stat4Sub">የትምህርት፣ የመዝሙር፣ የኪነ-ጥበብ እና ሌሎች</p>
+          </div>
+
+        </div>
+
+        <!-- QUICK LINKS BAR -->
+        <div class="mt-8 flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-rose-950 text-white shadow-md border border-amber-400/40">
+          <span class="font-bold text-amber-300 text-sm px-2 flex items-center gap-1" data-i18n="quickLinksTitle">
+            <span>⚡</span> ፈጣን አገናኞች (QUICK LINKS):
+          </span>
+          <div class="flex flex-wrap gap-2">
+            <a href="register.html" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-amber-400 hover:text-rose-950 text-xs font-bold transition">📝 ምዝገባ</a>
+            <a href="curriculum.html" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-amber-400 hover:text-rose-950 text-xs font-bold transition">📚 ሥርዓተ ትምህርት</a>
+            <a href="magazine.html" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-amber-400 hover:text-rose-950 text-xs font-bold transition">📖 መጽሔት</a>
+            <a href="results.html" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-amber-400 hover:text-rose-950 text-xs font-bold transition">📊 ውጤት</a>
+            <a href="#church-location" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-amber-400 hover:text-rose-950 text-xs font-bold transition">📍 አድራሻ</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="mx-auto max-w-7xl px-6 py-16 md:py-20 bg-white">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="mb-3 font-semibold text-amber-700 tracking-wider uppercase text-xs" data-i18n="aboutEyebrow">ስለ እኛ</p>
+        <h2 class="mb-6 text-3xl font-bold text-rose-950" data-i18n="aboutTitle">ስለ ሰንበት ትምህርት ቤታችን</h2>
+        <p class="leading-8 text-gray-600 text-base md:text-lg mb-8" data-i18n="aboutText">
+          የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት ሕፃናትን፣ ወጣቶችንና ምእመናንን በኦርቶዶክሳዊት ተዋሕዶ ቤተክርስቲያን እምነት፣ ሥርዓትና እሴት ኮትኩቶ በማሳደግ ለመንፈሳዊና ማህበራዊ አገልግሎት የሚያዘጋጅ መንፈሳዊ ተቋም ነው።
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="history.html" class="px-5 py-2.5 rounded-lg bg-amber-50 text-amber-800 font-semibold border border-amber-200 hover:bg-amber-100 transition text-sm" data-i18n="navHistory">የሰ/ት/ቤቱ ታሪክ</a>
+          <a href="vision_mission.html" class="px-5 py-2.5 rounded-lg bg-amber-50 text-amber-800 font-semibold border border-amber-200 hover:bg-amber-100 transition text-sm" data-i18n="navVision">ራዕይ እና ተልዕኮ</a>
+          <a href="departments.html" class="px-5 py-2.5 rounded-lg bg-amber-50 text-amber-800 font-semibold border border-amber-200 hover:bg-amber-100 transition text-sm" data-i18n="navDepartments">የአገልግሎት መዋቅርና ክፍሎች</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY SECTION -->
+    <section id="gallery" class="mx-auto max-w-7xl px-6 py-16 md:py-20 border-t border-stone-200 bg-stone-50">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-amber-700 font-semibold uppercase tracking-wider text-xs bg-amber-100 px-3 py-1 rounded-full" data-i18n="galleryBadge">ማዕከል</span>
+        <h2 class="text-3xl font-bold text-rose-950 mt-3" data-i18n="galleryTitle">የፎቶ ማዕከል (Photo Gallery)</h2>
+        <p class="text-gray-600 text-sm mt-2" data-i18n="gallerySubtitle">የሰንበት ትምህርት ቤታችን መደበኛ መርሃ-ግብሮች፣ የክፍል ውስጥ ትምህርቶች እና መንፈሳዊ ጉባኤዎች በምስል ሲታዩ።</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200 group">
+          <div class="h-56 overflow-hidden bg-rose-950 relative">
+            <img src="church-hero.png" alt="ቤተክርስቲያን እይታ" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+              <p class="text-white text-sm font-bold" data-i18n="galCaption1">መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200 group">
+          <div class="h-56 overflow-hidden bg-rose-950 relative flex items-center justify-center">
+            <img src="church-hero.png" alt="የሰንበት ትምህርት ቤት መርሃ-ግብር" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+              <p class="text-white text-sm font-bold" data-i18n="galCaption2">የተከታታይ ትምህርት መርሃ-ግብር (ከቀዳማይ እስከ ራብዓይ)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200 group">
+          <div class="h-56 overflow-hidden bg-rose-950 relative flex items-center justify-center">
+            <img src="church-hero.png" alt="መዝሙር እና ኪነጥበብ" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+              <p class="text-white text-sm font-bold" data-i18n="galCaption3">የመዝሙር እና ኪነ-ጥበብ አገልግሎት</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANNOUNCEMENTS SECTION -->
+    <section id="news" class="mx-auto max-w-7xl px-6 py-16 md:py-20 border-t border-stone-200 bg-white">
+      <div class="mb-8 text-center max-w-2xl mx-auto">
+        <p class="mb-2 font-semibold text-amber-700 tracking-wider uppercase text-xs" data-i18n="newsEyebrow">የቅርብ ጊዜ መረጃ</p>
+        <h2 class="text-3xl font-bold text-rose-950" data-i18n="newsTitle">ማስታወቂያዎች</h2>
+      </div>
+      <div class="rounded-2xl border border-stone-200 bg-stone-50 p-8 text-center max-w-3xl mx-auto shadow-sm">
+        <p class="mb-2 text-lg font-semibold text-gray-700" data-i18n="noNewsTitle">ለጊዜው ማስታወቂያ አልተጨመረም</p>
+        <p class="text-sm text-gray-500" data-i18n="noNewsText">አዲስ ማስታወቂያዎች ሲኖሩ እዚህ ይታያሉ።</p>
+      </div>
+    </section>
+
+    <!-- CHURCH LOCATION & SOCIAL MEDIA LINKS SECTION -->
+    <section id="church-location" class="py-16 bg-stone-50 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-amber-700 font-semibold uppercase tracking-wider text-xs bg-amber-100 px-3 py-1 rounded-full" data-i18n="locBadge">አድራሻችን እና መገኛችን</span>
+                <h2 class="text-3xl font-bold text-rose-950 mt-3" data-i18n="locTitle">መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን</h2>
+                <p class="text-gray-600 mt-2 max-w-2xl mx-auto text-sm" data-i18n="locSubtitle">ሰንበት ትምህርት ቤታችን የሚገኝበትን ትክክለኛ ቦታ በመመልከት በአካል በመገኘት ወይም በሳምንት መርሃ-ግብሮቻችን በመሳተፍ መንፈሳዊ አገልግሎት ይቀበሉ።</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Left Details Box -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200 lg:col-span-1 space-y-6 flex flex-col justify-between">
+                    <div>
+                      <h3 class="text-lg font-bold text-rose-950 border-b pb-3 mb-4 flex items-center gap-2">
+                          <span>📍</span> <span data-i18n="locCardHeader">የመገኛ አድራሻ መረጃ</span>
+                      </h3>
+                      <div class="space-y-4 text-gray-700 text-sm">
+                          <div class="flex items-start gap-3">
+                              <span class="bg-amber-100 text-amber-800 p-2 rounded-lg mt-0.5 font-bold">📍</span>
+                              <div>
+                                  <p class="font-semibold text-gray-900" data-i18n="locAddrLabel">አካባቢ / አድራሻ፦</p>
+                                  <p class="text-gray-600 text-xs sm:text-sm" data-i18n="locAddrVal">አዲስ አበባ፣ ፒያሳ  ኢትዮጵያ (መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን)</p>
+                              </div>
+                          </div>
+
+                          <div class="flex items-start gap-3 pt-2 border-t border-stone-100">
+                              <span class="bg-amber-100 text-amber-800 p-2 rounded-lg mt-0.5 font-bold">🕒</span>
+                              <div>
+                                  <p class="font-semibold text-gray-900" data-i18n="locHoursLabel">የአገልግሎት ሰዓታት፦</p>
+                                  <p class="text-gray-600 text-xs sm:text-sm" data-i18n="locHoursWeekdays">ከሰኞ እስከ አርብ: ከ10:00 ሰዓት እስከ ምሽት 1:30</p>
+                                  <p class="text-gray-600 text-xs sm:text-sm" data-i18n="locHoursWeekend">ቅዳሜ እና እሁድ: ከ4:30 ሰዓት እስከ ምሽት 1:30</p>
+                              </div>
+                          </div>
+
+                          <div class="flex items-start gap-3 pt-2 border-t border-stone-100">
+                              <span class="bg-amber-100 text-amber-800 p-2 rounded-lg mt-0.5 font-bold">📞</span>
+                              <div>
+                                  <p class="font-semibold text-gray-900" data-i18n="locPhoneLabel">ስልክ ቁጥር፦</p>
+                                  <p class="text-gray-600 text-xs sm:text-sm" data-i18n="locPhoneVal">+251-11-***-**** / በሰ/ት/ቤቱ ጽ/ቤት</p>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://maps.google.com/?q=St.+George+Church+Piazza+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="w-full inline-flex justify-center items-center gap-2 bg-rose-950 hover:bg-rose-900 text-amber-300 font-bold py-3.5 px-4 rounded-xl shadow-md transition duration-200 text-sm" data-i18n="btnOpenMap">
+                            በ Google Maps ክፈት 🗺️
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual Box -->
+                <div class="bg-stone-900 rounded-2xl shadow-sm border border-stone-200 lg:col-span-2 overflow-hidden min-h-[380px] relative group flex items-end">
+                    <img 
+                      src="church-hero.png" 
+                      alt="መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን" 
+                      class="absolute inset-0 h-full w-full object-cover object-center opacity-65 group-hover:scale-105 transition duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-rose-950/95 via-rose-950/60 to-transparent"></div>
+                    
+                    <div class="relative z-10 p-8 text-center text-white w-full">
+                        <div class="w-20 h-20 bg-white text-rose-950 rounded-full flex items-center justify-center p-1 mx-auto mb-4 shadow-xl border-2 border-amber-300">
+                            <img 
+                              src="logo.png" 
+                              alt="የሰንበት ት/ቤት ሎጎ" 
+                              class="w-full h-full object-cover rounded-full bg-white"
+                              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                            />
+                            <span class="hidden text-3xl font-bold">✝</span>
+                        </div>
+
+                        <h4 class="text-xl sm:text-2xl font-bold text-amber-300 drop-shadow" data-i18n="socialBoxTitle">የማህበራዊ ድረ-ገጾቻችን ማያያዣ</h4>
+                        <p class="text-xs sm:text-sm text-stone-200 max-w-md mx-auto mt-1 mb-6 drop-shadow-sm" data-i18n="socialBoxSub">በእነዚህ አዝራሮች በመግባት የሰንበት ትምህርት ቤታችንን ትምህርቶች፣ መዝሙራት እና አበይት እንቅስቃሴዎች ይከታተሉ።</p>
+
+                        <div class="flex flex-wrap items-center justify-center gap-3 max-w-lg mx-auto">
+                          <a href="https://www.youtube.com/@genetetsige1423" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow transition transform hover:-translate-y-0.5">
+                            <span>▶</span> <span>YouTube</span>
+                          </a>
+                          <a href="https://web.facebook.com/genetetsige/directory_links" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow transition transform hover:-translate-y-0.5">
+                            <span>f</span> <span>Facebook</span>
+                          </a>
+                          <a href="https://t.me/genetetsige" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow transition transform hover:-translate-y-0.5">
+                            <span>✈</span> <span>Telegram</span>
+                          </a>
+                          <a href="https://www.instagram.com/getachewmahder?mdxt=djhsZGVycDR4bHpt" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow transition transform hover:-translate-y-0.5">
+                            <span>📷</span> <span>Instagram</span>
+                          </a>
+                          <a href="https://www.tiktok.com/@genetetsige?_r=1&_t=ZS-9AgUyKcjrJW" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-black hover:bg-gray-800 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow border border-stone-700 transition transform hover:-translate-y-0.5">
+                            <span>🎵</span> <span>TikTok</span>
+                          </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  </main>
+
+ <!-- FLOATING QUICK ACTION BUTTONS -->
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-end">
+  <a href="https://t.me/genetetsige" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 bg-sky-500 hover:bg-sky-600 text-white rounded-full shadow-2xl transition-transform hover:scale-110 border-2 border-white" title="በቴሌግራም መልእክት ላክ">
+    💬
+  </a>
+  <a href="#news" class="flex items-center justify-center w-12 h-12 bg-rose-950 hover:bg-rose-900 text-amber-300 rounded-full shadow-2xl transition-transform hover:scale-110 border-2 border-amber-400" title="ማስታወቂያዎችን ተመልከት">
+    📢
+  </a>
+</div>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#3a101f] px-6 py-8 text-center text-sm text-gray-300 border-t border-stone-800">
+    <p>© <span data-i18n="footerText">1954 - 2019 የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን ሰንበት ትምህርት ቤት</span></p>
+    <p class="mt-2 text-amber-300 font-medium text-xs sm:text-sm" data-i18n="footerMotto">ትምህርት · አገልግሎት · መንፈሳዊ እድገት</p>
+  </footer>
+
+  <!-- JAVASCRIPT & SEARCH INDEX SCRIPT -->
+  <script>
+    // 1. SEARCH INDEX DATA FOR THE WEBSITE
+    const searchIndex = [
+      { keywords: ["ምዝገባ", "ተማሪ", "መመዝገብ", "አዲስ", "register", "registration"], title: "📝 የተማሪዎች ምዝገባ ገጽ", url: "register.html" },
+      { keywords: ["ውጤት", "ፈተና", "ማርክ", "result", "grade", "results"], title: "📊 የተማሪዎች ውጤት መመልከቻ", url: "results.html" },
+      { keywords: ["ቀዳማይ", "ካልኣይ", "ሣልሳይ", "ራብዓይ", "ትምህርት", "ትምህርቶች", "curriculum", "syllabus", "ግእዝ", "ታሪክ", "ሃይማኖት"], title: "📚 የትምህርት መርሃ-ግብር እና ሥርዓተ ትምህርት", url: "curriculum.html" },
+      { keywords: ["መጽሔት", "የሰሌዳ መጽሔት", "ጽሑፍ", "ግጥም", "magazine", "article"], title: "📖 የሰሌዳ መጽሔት እና መንፈሳዊ ጽሑፎች", url: "magazine.html" },
+      { keywords: ["ታሪክ", "አመሰራረት", "history", "about"], title: "⛪ የሰንበት ትምህርት ቤቱ ታሪክ", url: "history.html" },
+      { keywords: ["ራዕይ", "ተልዕኮ", "vision", "mission"], title: "🎯 ራዕይ እና ተልዕኮ", url: "vision_mission.html" },
+      { keywords: ["ክፍሎች", "መዋቅር", "አገልግሎት", "departments"], title: "🏛️ የአገልግሎት ክፍሎችና መዋቅር", url: "departments.html" },
+      { keywords: ["አድራሻ", "ቦታ", "ስልክ", "ካርታ", "map", "contact", "location"], title: "📍 አድራሻችን እና መገኛችን", url: "#church-location" },
+      { keywords: ["ፎቶ", "ማዕከል", "gallery", "photos"], title: "📷 የፎቶ ማዕከል", url: "#gallery" },
+      { keywords: ["ማስታወቂያ", "ዜና", "news", "notice"], title: "📢 ወቅታዊ ማስታወቂያዎች", url: "#news" }
+    ];
+
+    // SEARCH MODAL CONTROLS
+    function openSearchModal() {
+      document.getElementById('searchModal').classList.remove('hidden');
+      document.getElementById('searchInput').focus();
+    }
+
+    function closeSearchModal() {
+      document.getElementById('searchModal').classList.add('hidden');
+      document.getElementById('searchResults').classList.add('hidden');
+      document.getElementById('searchInput').value = '';
+    }
+
+    // LIVE SEARCH FUNCTIONALITY
+    function liveSearch() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const resultsContainer = document.getElementById('searchResults');
+      resultsContainer.innerHTML = '';
+
+      if (query.length < 2) {
+        resultsContainer.classList.add('hidden');
+        return;
+      }
+
+      const filtered = searchIndex.filter(item => 
+        item.keywords.some(kw => kw.toLowerCase().includes(query)) ||
+        item.title.toLowerCase().includes(query)
+      );
+
+      if (filtered.length > 0) {
+        resultsContainer.classList.remove('hidden');
+        filtered.forEach(item => {
+          const a = document.createElement('a');
+          a.href = item.url;
+          a.className = "block p-3 rounded-xl bg-stone-50 hover:bg-amber-100 hover:text-rose-950 text-stone-800 font-semibold border border-stone-200 transition";
+          a.textContent = item.title;
+          a.onclick = () => closeSearchModal();
+          resultsContainer.appendChild(a);
+        });
+      } else {
+        resultsContainer.classList.remove('hidden');
+        resultsContainer.innerHTML = `<div class="p-3 text-center text-gray-500 text-xs">«${query}» የሚል መረጃ አልተገኘም። እባክዎ ሌላ ቃል ይሞክሩ።</div>`;
+      }
+    }
+
+    function handleSearch(event) {
+      event.preventDefault();
+      liveSearch();
+      const firstResult = document.querySelector('#searchResults a');
+      if (firstResult) {
+        window.location.href = firstResult.href;
+        closeSearchModal();
+      }
+    }
+
+    // CAROUSEL SCRIPT
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.remove('opacity-0', 'z-0');
+          slide.classList.add('opacity-100', 'z-10');
+        } else {
+          slide.classList.remove('opacity-100', 'z-10');
+          slide.classList.add('opacity-0', 'z-0');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.remove('bg-white/50');
+          dot.classList.add('bg-amber-400');
+        } else {
+          dot.classList.remove('bg-amber-400');
+          dot.classList.add('bg-white/50');
+        }
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      let next = (currentSlide + 1) % totalSlides;
+      showSlide(next);
+    }
+
+    function prevSlide() {
+      let prev = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide(prev);
+    }
+
+    function goToSlide(index) {
+      showSlide(index);
+    }
+
+    setInterval(() => { nextSlide(); }, 4000);
+
+   // MULTI-LANGUAGE TRANSLATIONS DICTIONARY
+    const translations = {
+      am: {
+        pageTitle: "መናገሻ ገነተ ጽጌ | ሰንበት ትምህርት ቤት",
+        brandName: "መናገሻ ገነተ ጽጌ", brandSubtitle: "ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት",
+        navHome: "መነሻ", navLatest: "ወቅታዊ", navAbout: "ስለ እኛ", navPrograms: "ትምህርት", navMagazine: "መጽሔት", navServices: "አገልግሎቶች", navContact: "ያግኙን",
+        subNews: "ማስታወቂያዎች", subEvents: "አበይት ዜናዎች",
+        dayProgramTitle: "☀️ የቀን መርሃ-ግብር (ከቀዳማይ እስከ ራብዓይ)", eveProgramTitle: "🌙 የማታ መርሃ-ግብር (ከቀዳማይ እስከ ራብዓይ)", distProgramTitle: "📡 የርቀት ትምህርት", currSyllabus: "📚 ሥርዓተ ትምህርት (Syllabus)",
+        navRegister: "📝 ተማሪዎች መመዝገቢያ", navResults: "📊 ውጤት መመልከቻ", navGallery: "📷 ፎቶ ማዕከል",
+        navHistory: "የሰ/ት/ቤቱ ታሪክ", navVision: "ራዕይ እና ተልዕኮ", navDepartments: "የአገልግሎት መዋቅርና ክፍሎች",
+        heroWelcome: "እንኳን በደህና መጡ", heroTitle: "መናገሻ ገነተ ጽጌ", heroSubtitle: "ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት",
+        heroText: "የሰንበት ትምህርት ቤታችንን መረጃ፣ ከቀዳማይ እስከ ራብዓይ ያሉ የትምህርት ፕሮግራሞችና ማስታወቂያዎች በዚህ ድረ ገጽ ላይ ያግኙ።",
+        heroAboutBtn: "ስለ ትምህርት ቤቱ ይወቁ",
+        slide2Year: "የ2019 የትምህርት ዘመን", slide2Title: "አዲስ ተማሪዎች ምዝገባ እና ትምህርት", slide2Sub: "ቀዳማይ፣ ካልኣይ፣ ሣልሳይ እና ራብዓይ",
+        slide2Text: "በመሰረታዊ የሃይማኖት ትምህርት፣ በታሪክ፣ በሥርዓተ ቤተክርስቲያን እና በግእዝ ቋንቋ ከቀዳማይ እስከ ራብዓይ እናስተምራለን።",
+        slide2Btn: "አሁኑኑ ይመዝገቡ →",
+        slide3SubTitle: "መንፈሳዊ ትምህርቶች እና ጽሑፎች", slide3Title: "የሰሌዳ መጽሔት", slide3Sub: "ወቅታዊ መንፈሳዊ ጽሑፎችና ግጥሞች",
+        slide3Text: "በቤተክርስቲያናችን የሰሌዳ መጽሔት ላይ የሚወጡ ትምህርቶችን፣ የቅዱሳን ታሪክ እና ግጥሞችን በዲጂታል አማራጭ ያንብቡ።",
+        slide3Btn: "መጽሔት አንብብ →",
+        statEyebrow: "የተቋማችን መረጃ", statTitle: "የሰንበት ትምህርት ቤታችን ታሪካዊ ምዕራፍ በቁጥር",
+        stat1Title: "የተመሰረተበት ዓመት", stat1Sub: "ከ 65 ዓመታት በላይ መንፈሳዊ አገልግሎት",
+        stat2Title: "በመማር ላይ ያሉ ተማሪዎች", stat2Sub: "ከቀዳማይ እስከ ራብዓይ በመማር ላይ ያሉ",
+        stat3Title: "የክፍል ደረጃዎች", stat3Sub: "ቀዳማይ፣ ካልኣይ፣ ሣልሳይ እና ራብዓይ",
+        stat4Title: "የአገልግሎት ክፍሎች", stat4Sub: "ማስተማር፣ መዝሙር፣ ኪነ-ጥበብ እና ሌሎች",
+        quickLinksTitle: "⚡ ፈጣን አገናኞች (QUICK LINKS):",
+        quickReg: "📝 ምዝገባ", quickCurr: "📚 ሥርዓተ ትምህርት", quickMag: "📖 መጽሔት", quickRes: "📊 ውጤት", quickLoc: "📍 አድራሻ",
+        searchTitle: "በድረ-ገጹ ውስጥ ይፈልጉ", searchHint: "የሚፈልጉትን ቃል በመጻፍ በቀጥታ ወደሚፈልጉት ገጽ ይሸጋገሩ።",
+        aboutEyebrow: "ስለ እኛ", aboutTitle: "ስለ ሰንበት ትምህርት ቤታችን",
+        aboutText: "የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት ሕፃናትን፣ ወጣቶችንና ምእመናንን በኦርቶዶክሳዊት ተዋሕዶ ቤተክርስቲያን እምነት፣ ሥርዓትና እሴት ኮትኩቶ በማሳደግ ለመንፈሳዊና ማህበራዊ አገልግሎት የሚያዘጋጅ መንፈሳዊ ተቋም ነው።",
+        galleryBadge: "ማዕከል", galleryTitle: "የፎቶ ማዕከል (Photo Gallery)", gallerySubtitle: "የሰንበት ትምህርት ቤታችን መደበኛ መርሃ-ግብሮች፣ የክፍል ውስጥ ትምህርቶች እና መንፈሳዊ ጉባኤዎች በምስል ሲታዩ።",
+        galCaption1: "መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን", galCaption2: "የተከታታይ ትምህርት መርሃ-ግብር (ከቀዳማይ እስከ ራብዓይ)", galCaption3: "የመዝሙር እና ኪነ-ጥበብ አገልግሎት",
+        newsEyebrow: "የቅርብ ጊዜ መረጃ", newsTitle: "ማስታወቂያዎች", noNewsTitle: "ለጊዜው ማስታወቂያ አልተጨመረም", noNewsText: "አዲስ ማስታወቂያዎች ሲኖሩ እዚህ ይታያሉ።",
+        locBadge: "አድራሻችን እና መገኛችን", locTitle: "መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን",
+        locSubtitle: "ሰንበት ትምህርት ቤታችን የሚገኝበትን ትክክለኛ ቦታ በመመልከት በአካል በመገኘት ወይም በሳምንት መርሃ-ግብሮቻችን በመሳተፍ መንፈሳዊ አገልግሎት ይቀበሉ።",
+        locCardHeader: "የመገኛ አድራሻ መረጃ", locAddrLabel: "አካባቢ / አድራሻ፦", locAddrVal: "አዲስ አበባ፣ ፒያሳ ኢትዮጵያ (መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን)",
+        locHoursLabel: "የአገልግሎት ሰዓታት፦", locHoursWeekdays: "ከሰኞ እስከ አርብ: ከ10:00 ሰዓት እስከ ምሽት 1:30", locHoursWeekend: "ቅዳሜ እና እሁድ: ከ4:30 ሰዓት እስከ ምሽት 1:30",
+        locPhoneLabel: "ስልክ ቁጥር፦", locPhoneVal: "+251-11-***-**** / በሰ/ት/ቤቱ ጽ/ቤት", btnOpenMap: "በ Google Maps ክፈት 🗺️",
+        socialBoxTitle: "የማህበራዊ ድረ-ገጾቻችን ማያያዣ",
+        socialBoxSub: "በእነዚህ አዝራሮች በመግባት የሰንበት ትምህርት ቤታችንን ትምህርቶች፣ መዝሙራት እና አበይት እንቅስቃሴዎች ይከታተሉ።",
+        footerText: "1954 - 2026 የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን ሰንበት ትምህርት ቤት", footerMotto: "ትምህርት · አገልግሎት · መንፈሳዊ እድገት"
+      },
+      en: {
+        pageTitle: "Menagesha Genete Tsige | Sunday School",
+        brandName: "Menagesha Genete Tsige", brandSubtitle: "St. George Sunday School",
+        navHome: "Home", navLatest: "Latest", navAbout: "About Us", navPrograms: "Academics", navMagazine: "Magazine", navServices: "Services", navContact: "Contact",
+        subNews: "Announcements", subEvents: "News & Events",
+        dayProgramTitle: "☀️ Day Program (Kedamay to Rabay)", eveProgramTitle: "🌙 Evening Program (Kedamay to Rabay)", distProgramTitle: "📡 Distance Learning", currSyllabus: "📚 Curriculum & Syllabus",
+        navRegister: "📝 Student Registration", navResults: "📊 Result Checker", navGallery: "📷 Photo Gallery",
+        navHistory: "History", navVision: "Vision & Mission", navDepartments: "Departments",
+        heroWelcome: "WELCOME", heroTitle: "Menagesha Genete Tsige", heroSubtitle: "St. George Sunday School",
+        heroText: "Discover our Sunday School, Kedamay to Rabay learning programs, and announcements.",
+        heroAboutBtn: "Learn About Sunday School",
+        slide2Year: "2026/2027 Academic Year", slide2Title: "New Student Registration & Classes", slide2Sub: "Kedamay, Kalay, Salsay, and Rabay",
+        slide2Text: "We register and teach foundational religious education, history, church order, and Ge'ez from Kedamay to Rabay.",
+        slide2Btn: "Register Now →",
+        slide3SubTitle: "Spiritual Lessons & Articles", slide3Title: "Wall Magazine", slide3Sub: "Current spiritual articles and poems",
+        slide3Text: "Read teachings, saint histories, and poems published on our Sunday School wall magazine digitally.",
+        slide3Btn: "Read Magazine →",
+        statEyebrow: "OUR IMPACT", statTitle: "Our Sunday School History in Numbers",
+        stat1Title: "Established Year", stat1Sub: "Over 65 years of spiritual service",
+        stat2Title: "Students Enrolled", stat2Sub: "Enrolled from Kedamay to Rabay",
+        stat3Title: "Grade Levels", stat3Sub: "Kedamay, Kalay, Salsay, and Rabay",
+        stat4Title: "Service Departments", stat4Sub: "Teaching, Hymns, Arts & more",
+        quickLinksTitle: "⚡ QUICK LINKS:",
+        quickReg: "📝 Registration", quickCurr: "📚 Curriculum", quickMag: "📖 Magazine", quickRes: "📊 Results", quickLoc: "📍 Location",
+        searchTitle: "Search Website", searchHint: "Type keywords to quickly navigate.",
+        aboutEyebrow: "ABOUT US", aboutTitle: "About Our Sunday School",
+        aboutText: "Menagesha Genete Tsige St. George Sunday School is a spiritual institution dedicated to nurturing children, youth, and the faithful in the Ethiopian Orthodox Tewahedo Church.",
+        galleryBadge: "GALLERY", galleryTitle: "Photo Gallery", gallerySubtitle: "Visual glimpses of our Sunday School programs, classes, and spiritual gatherings.",
+        galCaption1: "Menagesha Genete Tsige St. George Church", galCaption2: "Continuous Education (Kedamay to Rabay)", galCaption3: "Hymns and Spiritual Arts Service",
+        newsEyebrow: "LATEST UPDATES", newsTitle: "Announcements", noNewsTitle: "No announcements published yet", noNewsText: "New announcements will appear here when available.",
+        locBadge: "Our Location & Address", locTitle: "Menagesha Genete Tsige St. George Church",
+        locSubtitle: "Find our exact location and join us in person or participate in our weekly Sunday School spiritual services.",
+        locCardHeader: "Location Address Info", locAddrLabel: "Area / Address:", locAddrVal: "Addis Ababa, Ethiopia Piazza (Menagesha Genete Tsige St. George Church)",
+        locHoursLabel: "Service Hours:", locHoursWeekdays: "Monday to Friday: 8:00 AM – 7:30 PM", locHoursWeekend: "Saturday & Sunday: 8:30 AM – 7:30 PM",
+        locPhoneLabel: "Phone Number:", locPhoneVal: "+251-11-***-**** / Sunday School Office", btnOpenMap: "Open in Google Maps 🗺️",
+        socialBoxTitle: "Our Social Media Links",
+        socialBoxSub: "Follow our spiritual lessons, hymns, and key activities through these channels.",
+        footerText: "1962 - 2026 Menagesha Genete Tsige St. George Sunday School", footerMotto: "Education · Service · Spiritual Growth"
+      },
+      om: {
+        pageTitle: "Managasha Ganata Tsigge | Mana Barnoota Dilbata",
+        brandName: "Managasha Ganata Tsigge", brandSubtitle: "Mana Barnoota Dilbata Qulqulluu Gyoorgis",
+        navHome: "Ka'umsa", navLatest: "Yeroo Ammaa", navAbout: "Sura Keenya", navPrograms: "Barnoota", navMagazine: "Magazinii", navServices: "Tajaajila", navContact: "Quunnamaa",
+        subNews: "Beeksisoota", subEvents: "Oduu fi Taateewwan",
+        dayProgramTitle: "☀️ Sagantaa Guyyaa (Qadaamii hanga Raabaay)", eveProgramTitle: "🌙 Sagantaa Galgalaa", distProgramTitle: "📡 Barnoota Fageenyaa", currSyllabus: "📚 Kiriikiulamii fi Siilabasii",
+        navRegister: "📝 Galmeessa Barattootaa", navResults: "📊 Bu'aa Ilaaluu", navGallery: "📷 Galarii Fakkii",
+        navHistory: "Seenaa Mana Barnoota Dilbata", navVision: "Mul'ata fi Ergama", navDepartments: "Kutaalee Tajaajilaa",
+        heroWelcome: "BAGAN NAGAYAN DHUFTAN", heroTitle: "Managasha Ganata Tsigge", heroSubtitle: "Mana Barnoota Dilbata Qulqulluu Gyoorgis",
+        heroText: "Odeeffannoo Mana Barnoota Dilbata keenyaa, sagantaawwan barnootaa Qadaamii hanga Raabaay fi beeksisoota asirratti argadhaa.",
+        heroAboutBtn: "Waa'ee Mana Barnoota Dilbata Baradhaa",
+        slide2Year: "Bara Barnootaa 2019", slide2Title: "Galmeessa Barattoota Haaraa fi Barnoota", slide2Sub: "Qadaamii, Lamaan, Sadaan fi Raabaay",
+        slide2Text: "Barnoota amantaa bu'uuraa, seenaa, sirna mana krestaanaa fi afaan Geez Qadaamii hanga Raabaay ni galmeessina.",
+        slide2Btn: "Amma Galmaa'aa →",
+        slide3SubTitle: "Barnoota Afuuraa fi Barreeffamoota", slide3Title: "Magazinii Dallaa", slide3Sub: "Barreeffamoota afuuraa fi walaloo yeroo ammaa",
+        slide3Text: "Barnoota, seenaa qulqullootaa fi walaloo magazinii keenya irratti baasu dubbisaa.",
+        slide3Btn: "Magazinii Dubbisaa →",
+        statEyebrow: "ODEESSA TAAJAJILA", statTitle: "Seenaa Mana Barnoota Dilbata Keenyaa Lakkoofsaan",
+        stat1Title: "Bara Hundeeffamaa", stat1Sub: "Tajaajila afuuraa waggaa 70 ol",
+        stat2Title: "Barattoota Barachaa Jiran", stat2Sub: "Qadaamii hanga Raabaay kan barachaa jiran",
+        stat3Title: "Sadarkaa Kutaa", stat3Sub: "Qadaamii, Lamaan, Sadaan fi Raabaay",
+        stat4Title: "Kutaalee Tajaajilaa", stat4Sub: "Barsiisuu, Faarfannaa, Og-artii fi kkf",
+        quickLinksTitle: "⚡ SAFARAA SAFU:",
+        quickReg: "📝 Galmee", quickCurr: "📚 Sirna Barnootaa", quickMag: "📖 Magaziina", quickRes: "📊 Bu'aa", quickLoc: "📍 Teessoo",
+        searchTitle: "Marsariiticha Keessatti Barbaadi", searchHint: "Odeeffannoo argachuuf jechoota furtuu barreessaa.",
+        aboutEyebrow: "SURA KEENYA", aboutTitle: "Waa'ee Mana Barnoota Dilbata Keenyaa",
+        aboutText: "Mana Barnoota Dilbata Managasha Ganata Tsigge Qulqulluu Gyoorgis daa'imman, dargaggoota fi amantoota amantaa fi sirna Mana Krestaana Ortodoksii Tawaahidootiin guddisuuf dhaabbateedha.",
+        galleryBadge: "GALARII", galleryTitle: "Galarii Fakkii", gallerySubtitle: "Sagantaawwan, daree barnootaa fi walgahii afuuraa Mana Barnoota Dilbata keenyaa.",
+        galCaption1: "Mana Krestaana Qulqulluu Gyoorgis Managasha", galCaption2: "Kutaa Barnootaa (Qadaamii hanga Raabaay)", galCaption3: "Tajaajila Faarfannaa fi Og-artii",
+        newsEyebrow: "ODEEFFANNOO HAARAA", newsTitle: "Beeksisoota", noNewsTitle: "Hanga ammaatti beeksisni hin maxxanfamne", noNewsText: "Beeksisni haaraan yoo jiraate asirratti mul'ata.",
+        locBadge: "Teessoo fi Bakka Keenya", locTitle: "Mana Krestaana Qulqulluu Gyoorgis Ganata Tsigge",
+        locSubtitle: "Bakka keenya sirrii ilaaluudhaan qaamaan dhufuun tajaajila afuuraa irratti hirmaadhaa.",
+        locCardHeader: "Odeeffannoo Teessoo", locAddrLabel: "Bakka / Teessoo:", locAddrVal: "Finfinnee, Itoophiyaa Piyaassaa (M/K Qulqulluu Gyoorgis Ganata Tsigge)",
+        locHoursLabel: "Sa'aatii Tajaajilaa:", locHoursWeekdays: "Wiixata - Jimaata: Sa'aatii 2:00 - 1:30", locHoursWeekend: "Sanbata - Dilbata: Sa'aatii 2:30 - 1:30",
+        locPhoneLabel: "Lakk. Bilbilaa:", locPhoneVal: "+251-11-***-**** / Waajjira M/B Dilbata", btnOpenMap: "Google Maps irratti Banaa 🗺️",
+        socialBoxTitle: "Geessituu Miidiyaa Hawaasaa Keenyaa",
+        socialBoxSub: "Kora barnootaa, faarfannaa fi sochiilee gurguddoo Mana Barnoota Dilbata keenyaa asiin hordofaa.",
+        footerText: "1954 - 2019 Mana Barnoota Dilbata Managasha Ganata Tsigge Qulqulluu Gyoorgis", footerMotto: "Barnoota · Tajaajila · Guddina Afuuraa"
+      },
+      ti: {
+        pageTitle: "መናገሻ ገነተ ጽጌ | ቤት ትምህርቲ ሰንበት",
+        brandName: "መናገሻ ገነተ ጽጌ", brandSubtitle: "ቤት ትምህርቲ ሰንበት ቅዱስ ጊዮርጊስ",
+        navHome: "መበገሲ", navLatest: "ሓዳስ", navAbout: "ብዛዕባና", navPrograms: "ትምህርቲ", navMagazine: "መጽሔት", navServices: "ኣገልግሎት", navContact: "ርከቡና",
+        subNews: "ምልከታታት", subEvents: "ዜናታትን ፍጻሜታትን",
+        dayProgramTitle: "☀️ መደብ መዓልቲ (ካብ ቀዳማይ ክሳብ ራብዓይ)", eveProgramTitle: "🌙 መደብ ምሸት (ካብ ቀዳማይ ክሳብ ራብዓይ)", distProgramTitle: "📡 ትምህርቲ ርሕቀት", currSyllabus: "📚 ስርዓተ ትምህርቲ (Syllabus)",
+        navRegister: "📝 ምዝገባ ተመሃሮ", navResults: "📊 ውጽኢት ምርኣይ", navGallery: "📷 መዘክር ስእሊ",
+        navHistory: "ታሪክ ቤ/ት ሰንበት", navVision: "ራእይን ተልእኾን", navDepartments: "ክፍላት ኣገልግሎት",
+        heroWelcome: "እንቋዕ ብደሓን መጻእክሙ", heroTitle: "መናገሻ ገነተ ጽጌ", heroSubtitle: "ቤት ትምህርቲ ሰንበት ቅዱስ ጊዮርጊስ",
+        heroText: "ሓበሬታ ቤት ትምህርቲ ሰንበትና፣ ካብ ቀዳማይ ክሳብ ራብዓይ ዘለዉ መደባት ትምህርትን ምልከታታትን ኣብዚ ረኺብኩም።",
+        heroAboutBtn: "ብዛዕባ ቤት ትምህርቲ ሰንበት ፍለጡ",
+        slide2Year: "ዘመን ትምህርቲ 2019", slide2Title: "ምዝገባ ሓደስቲ ተመሃሮን ትምህርትን", slide2Sub: "ቀዳማይ፣ ካልኣይ፣ ሣልሳይን ራብዓይን",
+        slide2Text: "ብሰረታዊ ትምህርቲ ሃይማኖት፣ ታሪክ፣ ስርዓተ ቤተክርስቲያንን ቋንቋ ግእዝን ካብ ቀዳማይ ክሳብ ራብዓይ ንምዝግብ ኢና።",
+        slide2Btn: "ሕጂ ተመዝገቡ →",
+        slide3SubTitle: "መንፈሳዊ ትምህርትታትን ጽሑፋትን", slide3Title: "መጽሔት ሰሌዳ", slide3Sub: "ወቅታዊ መንፈሳዊ ጽሑፋትን ግጥምታትን",
+        slide3Text: "ኣብ መጽሔት ሰሌዳ ቤተክርስቲያና ዝወጹ ትምህርትታት፣ ታሪክ ቅዱሳንን ግጥምታትን ብዲጂታል ኣንብቡ።",
+        slide3Btn: "መጽሔት አንብብ →",
+        statEyebrow: "ሓበሬታ ትካል", statTitle: "ታሪካዊ ምዕራፍ ቤት ትምህርቲ ሰንበትና ብቁጽሪ",
+        stat1Title: "ዝተመስረተሉ ዓመት", stat1Sub: "ካብ 65 ዓመታት ንበሊ ንመንፈሳዊ አገልግሎት",
+        stat2Title: "በመማር ላይ ያሉ ተማሪዎች", stat2Sub: "ካብ ቀዳማይ ክሳብ ራብዓይ ዝመሃሩ ዘለዉ",
+        stat3Title: "ደረጃታት ክፍሊ", stat3Sub: "ቀዳማይ፣ ካልኣይ፣ ሣልሳይን ራብዓይን",
+        stat4Title: "ክፍላት ኣገልግሎት", stat4Sub: "ማስተማር፣ መዝሙር፣ ኪነ-ጥበብን ካልኦትን",
+        quickLinksTitle: "⚡ ቅልጡፍ መላገቢታት (QUICK LINKS):",
+        quickReg: "📝 ምዝገባ", quickCurr: "📚 ስርዓተ ትምህርቲ", quickMag: "📖 መጽሔት", quickRes: "📊 ውጽኢት", quickLoc: "📍 ኣድራሻ",
+        searchTitle: "ኣብ መረብሓቦ ድለዩ", searchHint: "ዝደለይዎ ቃል ብምጽሓፍ ቅልጡፍ ሓበሬታ ረኸቡ።",
+        aboutEyebrow: "ብዛዕባና", aboutTitle: "ብዛዕባ ቤት ትምህርቲ ሰንበትና",
+        aboutText: "ቤት ትምህርቲ ሰንበት መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ህፃናት፣ ወጣታትን ምእመናንን ብእምነት፣ ስርዓትን እሴትን ኦርቶዶክሳዊት ተዋሕዶ ቤተክርስቲያን ኮስኪሱ ዘዕቢ መንፈሳዊ ተቋም እዩ።",
+        galleryBadge: "መዘክር ስእሊ", galleryTitle: "መዘክር ስእሊ (Photo Gallery)", gallerySubtitle: "መደባት ቤት ትምህርቲ ሰንበትና፣ ክፍሊ ትምህርትን መንፈሳዊ ጉባኤታትን ብስእሊ።",
+        galCaption1: "ቤተክርስቲያን ቅዱስ ጊዮርጊስ መናገሻ ገነተ ጽጌ", galCaption2: "መደብ ትምህርቲ (ካብ ቀዳማይ ክሳብ ራብዓይ)", galCaption3: "ኣገልግሎት መዝሙርን ስነ-ጥበብን",
+        newsEyebrow: "ሓደስቲ ሓበሬታታት", newsTitle: "ምልከታታት", noNewsTitle: "ኣብዚ እዋን ዝተወሰኽ ምልካች የለን", noNewsText: "ሓደስቲ ሓበሬታታት እንተሃልዮም ኣብዚ ዝረአዩ ይኸውን።",
+        locBadge: "ኣድራሻናን መበገሲናን", locTitle: "ቤተክርስቲያን ቅዱስ ጊዮርጊስ መናገሻ ገነተ ጽጌ",
+        locSubtitle: "ትክክለኛ ቦታና ብምርኣይ ብኣካል ብምርካብ ኣብ መንፈሳዊ አገልግሎትና ተሳተፉ።",
+        locCardHeader: "ሓበሬታ ኣድራሻ", locAddrLabel: "ቦታ / ኣድራሻ፦", locAddrVal: "ኣዲስ ኣበባ፣ ኢትዮጵያ ፒያሳ (ቤተክርስቲያን ቅዱስ ጊዮርጊስ መናገሻ ገነተ ጽጌ)",
+        locHoursLabel: "ሰዓታት ኣገልግሎት፦", locHoursWeekdays: "ሰኑይ ክሳብ ዓርቢ፡ ካብ ሰዓት 2:00 ክሳብ ምሸት 1:30", locHoursWeekend: "ቅዳሜን ሰንበትን፡ ካብ ሰዓት 2:30 ክሳብ ምሸት 1:30",
+        locPhoneLabel: "ቁጽሪ ስልኪ፦", locPhoneVal: "+251-11-***-**** / ጽሕፈት ቤት ሰንበት", btnOpenMap: "ኣብ Google Maps ክፈቱ 🗺️",
+        socialBoxTitle: "መላገቢ ማሕበራዊ መረብበብና",
+        socialBoxSub: "ትምህርትታት፣ መዝሙራትን ኪነ-ጥበብን ቤት ትምህርቲ ሰንበትና ብእዚዮም መላገቢታት ተኸታተሉ።",
+        footerText: "1954 - 2019 ቤት ትምህርቲ ሰንበት መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ", footerMotto: "ትምህርቲ · ኣገልግሎት · መንፈሳዊ ዕብየት"
+      }
+    };
+
+    const langLabelsMap = { am: "🇪🇹 አማርኛ", en: "🇬🇧 English", om: "🌳 Afaan Oromoo", ti: "🏔️ ትግርኛ" };
+
+    function changeLanguage(langCode) {
+      localStorage.setItem("preferredLang", langCode);
+      document.documentElement.lang = langCode;
+      
+      const labelEl = document.getElementById("currentLangLabel");
+      if (labelEl) labelEl.textContent = langLabelsMap[langCode] || "🇪🇹 አማርኛ";
+
+      const mobileSelect = document.getElementById("mobileLangSelect");
+      if (mobileSelect) mobileSelect.value = langCode;
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        const value = translations[langCode]?.[key];
+        if (typeof value === "string") element.textContent = value;
+      });
+    }
+
+    document.getElementById("menuButton")?.addEventListener("click", () => {
+      const menu = document.getElementById("mainMenu");
+      menu?.classList.toggle("hidden");
+      menu?.classList.toggle("flex");
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("preferredLang") || "am";
+      changeLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>

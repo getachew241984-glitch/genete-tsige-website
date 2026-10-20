@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Curriculum & Syllabus - Menagesha Genete Tsige St. George Sunday School." />
+  <meta name="theme-color" content="#641e32" />
+  <title data-i18n="currPageTitle">ሥርዓተ-ትምህርት | መናገሻ ገነተ ጽጌ ሰንበት ትምህርት ቤት</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --burgundy: #641e32;
+      --gold: #c6a04a;
+      --cream: #faf8f4;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Noto Sans Ethiopic", "Nyala", sans-serif;
+      background: var(--cream);
+    }
+    .focus-ring:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  </style>
+</head>
+
+<body class="text-gray-800">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white shadow-md border-b border-stone-200">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-8">
+      
+      <!-- LOGO & BRAND -->
+      <a href="index.html" class="flex items-center gap-2.5 focus-ring rounded-lg shrink-0">
+        <img
+          src="logo.png"
+          alt="መናገሻ ገነተ ጽጌ ሰንበት ትምህርት ቤት አርማ"
+          class="h-10 w-10 sm:h-12 sm:w-12 object-cover rounded-full border border-stone-200"
+          onerror="this.style.display='none'; document.getElementById('logoFallback').classList.remove('hidden');"
+        />
+        <div id="logoFallback" class="hidden flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-amber-600 bg-rose-950 text-base text-amber-300 md:h-12 md:w-12">
+          ✝
+        </div>
+        <div>
+          <h1 class="font-bold text-rose-950 text-base md:text-xl" data-i18n="brandName">ገነተ ጽጌ</h1>
+          <p class="text-[10px] text-gray-600 font-medium sm:text-xs" data-i18n="brandSubtitle">ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት</p>
+        </div>
+      </a>
+
+      <!-- RIGHT CONTROLS (MULTILINGUAL DROPDOWN & BACK HOME) -->
+      <div class="flex items-center gap-3">
+        <!-- MULTI-LANGUAGE DROPDOWN -->
+        <div class="relative group">
+          <button type="button" class="focus-ring flex items-center gap-1 rounded-lg border border-amber-600 bg-amber-50/50 px-2.5 py-1 text-xs font-bold text-rose-950 hover:bg-amber-100 transition">
+            <span id="currentLangLabel">🇪🇹 አማርኛ</span>
+            <span class="text-[10px]">▾</span>
+          </button>
+          <div class="hidden group-hover:flex absolute right-0 top-full w-36 flex-col rounded-lg bg-white shadow-xl border border-stone-100 py-1.5 z-50">
+            <button onclick="changeLanguage('am')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🇪🇹 አማርኛ</button>
+            <button onclick="changeLanguage('en')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🇬🇧 English</button>
+            <button onclick="changeLanguage('om')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🌳 Afaan Oromoo</button>
+            <button onclick="changeLanguage('ti')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🏔️ ትግርኛ</button>
+          </div>
+        </div>
+
+        <a href="index.html" class="focus-ring rounded-lg border border-rose-950 px-4 py-2 text-xs font-bold text-rose-950 hover:bg-rose-50 transition" data-i18n="backHome">
+          &larr; ወደ ዋናው ገጽ ተመለስ
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="mx-auto max-w-7xl px-6 py-10 md:py-14">
+    
+    <!-- PAGE TITLE HEADER -->
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <span id="shiftBadge" class="inline-block text-amber-800 font-bold uppercase tracking-wider text-xs bg-amber-100 px-3 py-1 rounded-full border border-amber-200 mb-2">
+        ☀️ የቀን መርሃ-ግብር
+      </span>
+      <h2 id="displayProgramTitle" class="text-2xl sm:text-3xl font-extrabold text-rose-950">
+        ቀዳማይ ክፍል (1ኛ ዓመት)
+      </h2>
+      <p class="text-gray-600 mt-2 text-sm" data-i18n="currSubtitle">በሰንበት ትምህርት ቤቱ የተረጋገጠ የትምህርት ሰሌዳ እና ይዘት (2019 ዓ.ም)</p>
+    </div>
+
+    <!-- GRADE SELECTION TABS -->
+    <div class="bg-white p-5 rounded-2xl shadow-sm border border-stone-200 mb-8">
+      <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 text-center sm:text-left" data-i18n="lblSelectGrade">ክፍል / ዓመት ይምረጡ</label>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <button onclick="setGrade('g1')" id="btnGradeG1" class="px-4 py-2.5 rounded-xl text-xs font-bold transition bg-amber-100 text-rose-950 border border-amber-300 shadow-sm">
+          <span data-i18n="g1">ቀዳማይ ክፍል (1ኛ ዓመት)</span>
+        </button>
+        <button onclick="setGrade('g2')" id="btnGradeG2" class="px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-50 text-gray-700 hover:bg-stone-100 border border-stone-200">
+          <span data-i18n="g2">ካልዓይ ክፍል (2ኛ ዓመት)</span>
+        </button>
+        <button onclick="setGrade('g3')" id="btnGradeG3" class="px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-50 text-gray-700 hover:bg-stone-100 border border-stone-200">
+          <span data-i18n="g3">ሣልሳይ ክፍል (3ኛ ዓመት)</span>
+        </button>
+        <button onclick="setGrade('g4')" id="btnGradeG4" class="px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-50 text-gray-700 hover:bg-stone-100 border border-stone-200">
+          <span data-i18n="g4">ራብዓይ ክፍል (4ኛ ዓመት)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- CURRICULUM TABLE -->
+    <div class="overflow-x-auto rounded-2xl bg-white shadow-sm border border-stone-200">
+      <table class="w-full text-left text-sm text-gray-700 border-collapse">
+        <thead class="bg-rose-950 text-amber-300 text-xs uppercase">
+          <tr>
+            <th class="p-4 border-b border-rose-900 font-bold" data-i18n="thNo">ተ.ቁ</th>
+            <th class="p-4 border-b border-rose-900 font-bold" data-i18n="thSubject">የትምህርት ዓይነት</th>
+            <th class="p-4 border-b border-rose-900 font-bold" data-i18n="thTime">ክፍለ-ጊዜ / ሞጁል</th>
+            <th class="p-4 border-b border-rose-900 font-bold" data-i18n="thSchedule">የምደባ ቀን / ዘዴ</th>
+            <th class="p-4 border-b border-rose-900 font-bold" data-i18n="thTeacher">የመምህር ስም</th>
+            <th class="p-4 border-b border-rose-900 font-bold" data-i18n="thStatus">ሁኔታ</th>
+          </tr>
+        </thead>
+        <tbody id="curriculumTableBody" class="divide-y divide-gray-100"></tbody>
+      </table>
+    </div>
+
+    <!-- FOOTER ACTIONS -->
+    <div class="mt-6 flex flex-wrap justify-between items-center gap-4">
+      <p class="text-xs text-gray-500 font-medium" data-i18n="curriculumNote">* የትምህርት መርሃ-ግብሩ በስርዓተ-ትምህርት ክፍሉ የተረጋገጠ ነው።</p>
+      <div class="flex gap-3">
+        <button onclick="exportCurriculumExcel()" class="focus-ring flex items-center gap-2 rounded-xl bg-emerald-700 px-5 py-2.5 text-xs font-bold text-white hover:bg-emerald-800 shadow-sm transition">
+          <span>📊</span>
+          <span data-i18n="btnExport">መርሃ-ግብሩን በ Excel አውርድ</span>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#3a101f] px-6 py-6 text-center text-sm text-gray-300 mt-20">
+    <p>© <span data-i18n="footerText">2019 የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን ሰንበት ትምህርት ቤት</span></p>
+  </footer>
+
+  <script>
+    let currentLanguage = "am";
+    let activeShift = "day";
+    let activeGrade = "g1";
+
+    const translations = {
+      am: {
+        currPageTitle: "ሥርዓተ-ትምህርት | መናገሻ ገነተ ጽጌ ሰንበት ትምህርት ቤት",
+        brandName: "ገነተ ጽጌ", brandSubtitle: "ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት",
+        backHome: "← ወደ ዋናው ገጽ ተመለስ",
+        currSubtitle: "በሰንበት ትምህርት ቤቱ የተረጋገጠ የትምህርት ሰሌዳ እና ይዘት (2019 ዓ.ም)",
+        lblSelectGrade: "ክፍል / ዓመት ይምረጡ",
+        g1: "ቀዳማይ ክፍል (1ኛ ዓመት)", g2: "ካልዓይ ክፍል (2ኛ ዓመት)", g3: "ሣልሳይ ክፍል (3ኛ ዓመት)", g4: "ራብዓይ ክፍል (4ኛ ዓመት)",
+        thNo: "ተ.ቁ", thSubject: "የትምህርት ዓይነት", thTime: "ክፍለ-ጊዜ / ሞጁል", thSchedule: "የምደባ ቀን / ዘዴ", thTeacher: "የመምህር ስም", thStatus: "ሁኔታ",
+        curriculumNote: "* የትምህርት መርሃ-ግብሩ በስርዓተ-ትምህርት ክፍሉ የተረጋገጠ ነው።", btnExport: "መርሃ-ግብሩን በ Excel አውርድ",
+        footerText: "2019 የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን ሰንበት ትምህርት ቤት"
+      },
+      en: {
+        currPageTitle: "Curriculum | Menagesha Genete Tsige Sunday School",
+        brandName: "Genete Tsige", brandSubtitle: "St. George Sunday School",
+        backHome: "← Back to Home",
+        currSubtitle: "Verified Sunday School Curriculum & Schedule (2019 E.C.)",
+        lblSelectGrade: "Select Grade / Year",
+        g1: "1st Year (Qadamay)", g2: "2nd Year (Kal'ay)", g3: "3rd Year (Sal'say)", g4: "4th Year (Rab'ay)",
+        thNo: "No.", thSubject: "Subject", thTime: "Sessions / Modules", thSchedule: "Schedule / Method", thTeacher: "Teacher Name", thStatus: "Status",
+        curriculumNote: "* Curriculum is verified by the education department.", btnExport: "Export Curriculum to Excel",
+        footerText: "2026 Menagesha Genete Tsige St. George Sunday School"
+      },
+      om: {
+        currPageTitle: "Sirt-Barnoota | Mana Barnoota Dilbata Gyoorgis",
+        brandName: "Ganata Tsigge", brandSubtitle: "Mana Barnoota Dilbata Qulqulluu Gyoorgis",
+        backHome: "← Gara Ka'umsaatti Deebi'i",
+        currSubtitle: "Kukkitii fi Sagantaa Barnoota Mirkanaa'e",
+        lblSelectGrade: "Kutaa Filadhaa",
+        g1: "Kutaa 1ffaa (Waggaa 1)", g2: "Kutaa 2ffaa (Waggaa 2)", g3: "Kutaa 3ffaa (Waggaa 3)", g4: "Kutaa 4ffaa (Waggaa 4)",
+        thNo: "Lakk.", thSubject: "Gosa Barnootaa", thTime: "Kutaa / Moojulii", thSchedule: "Guyyaa / Toftaa", thTeacher: "Maqaa Barsiisaa", thStatus: "Haala",
+        curriculumNote: "* Sagantaan barnoota kutaa barnootatiin kan mirkanaa'eedha.", btnExport: "Gabaasa Excel Buufadhaa",
+        footerText: "2026 Mana Barnoota Dilbata Managasha Ganata Tsigge Qulqulluu Gyoorgis"
+      },
+      ti: {
+        currPageTitle: "ሥርዓተ-ትምህርቲ | ቤት ትምህርቲ ሰንበት ቅዱስ ጊዮርጊስ",
+        brandName: "ገነተ ጽጌ", brandSubtitle: "ቤት ትምህርቲ ሰንበት ቅዱስ ጊዮርጊስ",
+        backHome: "← ናብ መበገሲ ተመለስ",
+        currSubtitle: "ብክፍሊ ትምህርቲ ዝተረጋገፀ ሰሌዳን ትሕዝቶን",
+        lblSelectGrade: "ክፍል ምረጹ",
+        g1: "ቀዳማይ ክፍል (1ይ ዓመት)", g2: "ካልኣይ ክፍል (2ይ ዓመት)", g3: "ሣልሳይ ክፍል (3ይ ዓመት)", g4: "ራብዓይ ክፍል (4ይ ዓመት)",
+        thNo: "ተ.ቁ", thSubject: "ዓይነት ትምህርቲ", thTime: "ክፍለ-ጊዜ / ሞጁል", thSchedule: "መዓልቲ / ዘዴ", thTeacher: "ስም መምህር", thStatus: "ኩነታት",
+        curriculumNote: "* መደብ ትምህርቲ ብክፍሊ ትምህርቲ ዝተረጋገፀ እዩ።", btnExport: "ብ Excel ኣውርዱ",
+        footerText: "2026 ቤት ትምህርቲ ሰንበት መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ"
+      }
+    };
+
+    const scheduleTranslations = {
+      am: { "ቅዳሜ እና እሁድ": "ቅዳሜ እና እሁድ", "ቅዳሜ": "ቅዳሜ", "እሁድ": "እሁድ", "ማክሰኞ": "ማክሰኞ", "ሐሙስ": "ሐሙስ", "ማክሰኞ / ሐሙስ / ቅዳሜ": "ማክሰኞ / ሐሙስ / ቅዳሜ", "ማክሰኞ / ሐሙስ": "ማክሰኞ / ሐሙስ", "ማክሰኞ / ቅዳሜ": "ማክሰኞ / ቅዳሜ", "ሐሙስ / ቅዳሜ": "ሐሙስ / ቅዳሜ", "በራሱ ጊዜ / ኦንላይን": "በራሱ ጊዜ / ኦንላይን" },
+      en: { "ቅዳሜ እና እሁድ": "Sat & Sun", "ቅዳሜ": "Saturday", "እሁድ": "Sunday", "ማክሰኞ": "Tuesday", "ሐሙስ": "Thursday", "ማክሰኞ / ሐሙስ / ቅዳሜ": "Tue / Thu / Sat", "ማክሰኞ / ሐሙስ": "Tue / Thu", "ማክሰኞ / ቅዳሜ": "Tue / Sat", "ሐሙስ / ቅዳሜ": "Thu / Sat", "በራሱ ጊዜ / ኦንላይን": "Self-paced / Online" },
+      om: { "ቅዳሜ እና እሁድ": "Sanb.X & Dilbata", "ቅዳሜ": "Sanbata Xiqqaa", "እሁድ": "Dilbata", "ማክሰኞ": "Kibxata", "ሐሙስ": "Kamisa", "ማክሰኞ / ሐሙስ / ቅዳሜ": "Kib / Kam / San.X", "ማክሰኞ / ሐሙስ": "Kibxata / Kamisa", "ማክሰኞ / ቅዳሜ": "Kibxata / San.X", "ሐሙስ / ቅዳሜ": "Kamisa / San.X", "በራሱ ጊዜ / ኦንላይን": "Yeroo Mataasaatti / Onlaayinii" },
+      ti: { "ቅዳሜ እና እሁድ": "ቀዳምን ሰንበትን", "ቅዳሜ": "ቀዳም", "እሁድ": "ሰንበት", "ማክሰኞ": "ሰሉስ", "ሐሙስ": "ሓሙስ", "ማክሰኞ / ሐሙስ / ቅዳሜ": "ሰሉስ / ሓሙስ / ቀዳም", "ማክሰኞ / ሐሙስ": "ሰሉስ / ሓሙስ", "ማክሰኞ / ቅዳሜ": "ሰሉስ / ቀዳም", "ሐሙስ / ቅዳሜ": "ሓሙስ / ቀዳም", "በራሱ ጊዜ / ኦንላይን": "ብገዛእ ርእሱ / ኦንላይን" }
+    };
+
+    const statusTranslations = {
+      am: { "🟢 ጸድቋል": "🟢 ጸድቋል", "🟡 በመታረም ላይ": "🟡 በመታረም ላይ", "🟢 ክፍት ነው": "🟢 ክፍት ነው" },
+      en: { "🟢 ጸድቋል": "🟢 Approved", "🟡 በመታረም ላይ": "🟡 Pending", "🟢 ክፍት ነው": "🟢 Open" },
+      om: { "🟢 ጸድቋል": "🟢 Mirkanaa'eera", "🟡 በመታረም ላይ": "🟡 Adeemsarraa", "🟢 ክፍት ነው": "🟢 Banaada" },
+      ti: { "🟢 ጸድቋል": "🟢 ጸዲቑ", "🟡 በመታረም ላይ": "🟡 ኣብ ምዕራይ", "🟢 ክፍት ነው": "🟢 ኽፉት እዩ" }
+    };
+
+    // TEACHER NAME TRANSLITERATION MAP (Amharic to English, Oromo, Tigrinya phonetics)
+    const teacherTranslations = {
+      am: {
+        "ጥበቡ መኮንን": "ጥበቡ መኮንን", "አንተነህ ጋረደው": "አንተነህ ጋረደው", "አስናቀ ስሜ": "አስናቀ ስሜ", "ሚካኤል ተክሌ": "ሚካኤል ተክሌ", "አልአዛር ሲሳይ": "አልአዛር ሲሳይ",
+        "ዮሐንስ ገ/መስቀል": "ዮሐንስ ገ/መስቀል", "ተስፋዬ አማረ": "ተስፋዬ አማረ", "ተስፋዬ በላይ": "ተስፋዬ በላይ", "እንዳልካቸው ወንድምኩን": "እንዳልካቸው ወንድምኩን", "ክርስቲ ተሾመ": "ክርስቲ ተሾመ",
+        "በላቸው ይልማ": "በላቸው ይልማ", "ሰለሞን": "ሰለሞን", "ዲ/ን ኤልያስ ጥላሁን": "ዲ/ን ኤልያስ ጥላሁን", "መኩሪያ ቴኒ": "መኩሪያ ቴኒ", "ደግፍ ኃይሉ": "ደግፍ ኃይሉ",
+        "አድነው ተፈራ": "አድነው ተፈራ", "ቀሲስ ሙሉጌታ": "ቀሲስ ሙሉጌታ", "ዳዊት ደስታ": "ዳዊት ደስታ", "አበበ ተሻለ": "አበበ ተሻለ", "ጌትነት ማሞ": "ጌትነት ማሞ",
+        "ፍሬሕይወት ንጉሤ": "ፍሬሕይወት ንጉሤ", "ተመድቦ የሚጠበቅ": "ተመድቦ የሚጠበቅ"
+      },
+      en: {
+        "ጥበቡ መኮንን": "Tibebu Mekonnen", "አንተነህ ጋረደው": "Anteneh Garedew", "አስናቀ ስሜ": "Asnake Seme", "ሚካኤል ተክሌ": "Mikail Tekle", "አልአዛር ሲሳይ": "Eleazar Sisay",
+        "ዮሐንስ ገ/መስቀል": "Yohanes Gebremeskel", "ተስፋዬ አማረ": "Tesfaye Amare", "ተስፋዬ በላይ": "Tesfaye Belay", "እንዳልካቸው ወንድምኩን": "Endalkachew Wondmkun", "ክርስቲ ተሾመ": "Christy Teshome",
+        "በላቸው ይልማ": "Belayhu Yilma", "ሰለሞን": "Solomon", "ዲ/ን ኤልያስ ጥላሁን": "Dn. Elias Tilahun", "መኩሪያ ቴኒ": "Mekuria Teni", "ደግፍ ኃይሉ": "Degife Haylu",
+        "አድነው ተፈራ": "Adnew Tefera", "ቀሲስ ሙሉጌታ": "Qesis Mulugeta", "ዳዊት ደስታ": "Dawit Desta", "አበበ ተሻለ": "Abebe Teshale", "ጌትነት ማሞ": "Getnet Mamo",
+        "ፍሬሕይወት ንጉሤ": "Frehiwot Nigusse", "ተመድቦ የሚጠበቅ": "To be assigned"
+      },
+      om: {
+        "ጥበቡ መኮንን": "Tibebuu Makoonnans", "አንተነህ ጋረደው": "Antanneh Gaaraddoo", "አስናቀ ስሜ": "Asnaaqee Simoo", "ሚካኤል ተክሌ": "Mikaa'el Teklee", "አልአዛር ሲሳይ": "Al'azaar Siisaay",
+        "ዮሐንስ ገ/መስቀል": "Yohaannis Gabramasqal", "ተስፋዬ አማረ": "Tasfaayee Amarae", "ተስፋዬ በላይ": "Tasfaayee Balay", "እንዳልካቸው ወንድምኩን": "Indalkaachew Wandimkuun", "ክርስቲ ተሾመ": "Kiristii Tashomae",
+        "በላቸው ይልማ": "Balayhu Yilmaa", "ሰለሞን": "Solomoon", "ዲ/ን ኤልያስ ጥላሁን": "Diyaacon Eeliyaas Xilaahun", "መኩሪያ ቴኒ": "Makuuriyaa Teenii", "ደግፍ ኃይሉ": "Dargaf Hayluu",
+        "አድነው ተፈራ": "Adnaaw Tafaraa", "ቀሲስ ሙሉጌታ": "Qasiis Mulugetaa", "ዳዊት ደስታ": "Daawit Dastaa", "አበበ ተሻለ": "Ababbaa Tashalae", "ጌትነት ማሞ": "Geetannat Maamoo",
+        "ፍሬሕይወት ንጉሤ": "Firaehiywot Niguusee", "ተመድቦ የሚጠበቅ": "Kan Ramadamu"
+      },
+      ti: {
+        "ጥበቡ መኮንን": "ጥበቡ መኮንን", "አንተነህ ጋረደው": "አንተነህ ጋረደው", "አስናቀ ስሜ": "አስናቀ ስሜ", "ሚካኤል ተክሌ": "ሚካኤል ተክሌ", "አልአዛር ሲሳይ": "አልአዛር ሲሳይ",
+        "ዮሐንስ ገ/መስቀል": "ዮሐንስ ገ/መስቀል", "ተስፋዬ አማረ": "ተስፋዬ አማረ", "ተስፋዬ በላይ": "ተስፋዬ በላይ", "እንዳልካቸው ወንድምኩን": "እንዳልካቸው ወንድምኩን", "ክርስቲ ተሾመ": "ክርስቲ ተሾመ",
+        "በላቸው ይልማ": "በላቸው ይልማ", "ሰለሞን": "ሰለሞን", "ዲ/ን ኤልያስ ጥላሁን": "ዲ/ን ኤልያስ ጥላሁን", "መኩሪያ ቴኒ": "መኩሪያ ቴኒ", "ደግፍ ኃይሉ": "ደግፍ ኃይሉ",
+        "አድነው ተፈራ": "አድነው ተፈራ", "ቀሲስ ሙሉጌታ": "ቀሲስ ሙሉጌታ", "ዳዊት ደስታ": "ዳዊት ደስታ", "አበበ ተሻለ": "አበበ ተሻለ", "ጌትነት ማሞ": "ጌትነት ማሞ",
+        "ፍሬሕይወት ንጉሤ": "ፍሬሕይወት ንጉሤ", "ተመድቦ የሚጠበቅ": "ዝምደብ"
+      }
+    };
+
+    const gradeLabels = {
+      am: { g1: "ቀዳማይ ክፍል (1ኛ ዓመት)", g2: "ካልዓይ ክፍል (2ኛ ዓመት)", g3: "ሣልሳይ ክፍል (3ኛ ዓመት)", g4: "ራብዓይ ክፍል (4ኛ ዓመት)" },
+      en: { g1: "1st Year (Qadamay)", g2: "2nd Year (Kal'ay)", g3: "3rd Year (Sal'say)", g4: "4th Year (Rab'ay)" },
+      om: { g1: "Kutaa 1ffaa", g2: "Kutaa 2ffaa", g3: "Kutaa 3ffaa", g4: "Kutaa 4ffaa" },
+      ti: { g1: "ቀዳማይ ክፍል", g2: "ካልኣይ ክፍል", g3: "ሣልሳይ ክፍል", g4: "ራብዓይ ክፍል" }
+    };
+
+    // MASTER CURRICULUM DATA
+    const curriculumData = {
+      day: {
+        g1: [
+          { subject: { am: "ክርስቲያናዊ ሥነ-ምግባር", en: "Christian Ethics", om: "Amala Kirastaanummaa", ti: "ክርስቲያናዊ ሥነ-ምግባር" }, time: { am: "25 ክፍለ-ጊዜ", en: "25 Sessions", om: "Kutaa 25", ti: "25 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ እና እሁድ", teacher: "ጥበቡ መኮንን", status: "🟢 ጸድቋል" },
+          { subject: { am: "የመጽሐፍ ቅዱስ ጥናት", en: "Bible Study", om: "Qorannoo Kitaaba Qulqulluu", ti: "መፅሐፍ ቅዱስ ጥናት" }, time: { am: "33 ክፍለ-ጊዜ", en: "33 Sessions", om: "Kutaa 33", ti: "33 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ", teacher: "አንተነህ ጋረደው", status: "🟢 ጸድቋል" },
+          { subject: { am: "የቤተክርስቲያን ታሪክ መግቢያ", en: "Intro to Church History", om: "Seenaa Mana Krestaanaa", ti: "መእተዊ ታሪክ ቤተክርስቲያን" }, time: { am: "32 ክፍለ-ጊዜ", en: "32 Sessions", om: "Kutaa 32", ti: "32 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ እና እሁድ", teacher: "አስናቀ ስሜ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ትምህርተ ሃይማኖት", en: "Dogmatic Theology", om: "Barnoota Amantaa", ti: "ትምህርተ ሃይማኖት" }, time: { am: "39 ክፍለ-ጊዜ", en: "39 Sessions", om: "Kutaa 39", ti: "39 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ", teacher: "ሚካኤል ተክሌ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language", om: "Afaan Geez", ti: "ግእዝ" }, time: { am: "20 ክፍለ-ጊዜ", en: "20 Sessions", om: "Kutaa 20", ti: "20 ክፍለ-ጊዜ" }, schedule: "እሁድ", teacher: "አልአዛር ሲሳይ", status: "🟡 በመታረም ላይ" }
+        ],
+        g2: [
+          { subject: { am: "የቤተክርስቲያን ታሪክ በአለም መድረክ", en: "World Church History", om: "Seenaa MK Addunyaa", ti: "ታሪክ ቤተክርስቲያን ኣብ ዓለም" }, time: { am: "32 ክፍለ-ጊዜ", en: "32 Sessions", om: "Kutaa 32", ti: "32 ክፍለ-ጊዜ" }, schedule: "እሁድ", teacher: "ዮሐንስ ገ/መስቀል", status: "🟢 ጸድቋል" },
+          { subject: { am: "የቤተክርስቲያን ታሪክ በኢትዮጵያ", en: "Ethiopian Church History", om: "Seenaa MK Itoophiyaa", ti: "ታሪክ ቤተክርስቲያን ኣብ ኢትዮጵያ" }, time: { am: "30 ክፍለ-ጊዜ", en: "30 Sessions", om: "Kutaa 30", ti: "30 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ", teacher: "ተስፋዬ አማረ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ምሥጥራተ ቤተክርስቲያን", en: "Church Sacraments", om: "Iccitiiwwan Mana Krestaanaa", ti: "ምሥጥራተ ቤተክርስቲያን" }, time: { am: "27 ክፍለ-ጊዜ", en: "27 Sessions", om: "Kutaa 27", ti: "27 ክፍለ-ጊዜ" }, schedule: "እሁድ", teacher: "ተስፋዬ በላይ", status: "🟢 ጸድቋል" },
+          { subject: { am: "የማቴዎስ ወንጌል", en: "Gospel of Matthew", om: "Wangeela Maatewos", ti: "ወንጌል ማቴዎስ" }, time: { am: "37 ክፍለ-ጊዜ", en: "37 Sessions", om: "Kutaa 37", ti: "37 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ", teacher: "እንዳልካቸው ወንድምኩን", status: "🟢 ጸድቋል" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language", om: "Afaan Geez", ti: "ግእዝ" }, time: { am: "24 ክፍለ-ጊዜ", en: "24 Sessions", om: "Kutaa 24", ti: "24 ክፍለ-ጊዜ" }, schedule: "እሁድ", teacher: "ክርስቲ ተሾመ", status: "🟢 ጸድቋል" }
+        ],
+        g3: [
+          { subject: { am: "የዮሐንስ ወንጌል", en: "Gospel of John", om: "Wangeela Yohaannis", ti: "ወንጌል ዮሐንስ" }, time: { am: "35 ክፍለ-ጊዜ", en: "35 Sessions", om: "Kutaa 35", ti: "35 ክፍለ-ጊዜ" }, schedule: "እሁድ", teacher: "በላቸው ይልማ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ጥናት እና ምርምር", en: "Research Methods", om: "Qorannoo fi Sakatta'iinsa", ti: "ጥናትና ምርምር" }, time: { am: "23 ክፍለ-ጊዜ", en: "23 Sessions", om: "Kutaa 23", ti: "23 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ", teacher: "ሰለሞን", status: "🟢 ጸድቋል" },
+          { subject: { am: "ክርስቲያናዊ ሕይወት", en: "Christian Life", om: "Jireenya Kirastaanummaa", ti: "ክርስቲያናዊ ሕይወት" }, time: { am: "34 ክፍለ-ጊዜ", en: "34 Sessions", om: "Kutaa 34", ti: "34 ክፍለ-ጊዜ" }, schedule: "እሁድ", teacher: "ዲ/ን ኤልያስ ጥላሁን", status: "🟢 ጸድቋል" },
+          { subject: { am: "መዝሙር እና ሚስጥራቱ", en: "Hymns & Mysteries", om: "Faarfannaa fi Iccitiisaa", ti: "መዝሙርን ምስጢራቱን" }, time: { am: "23 ክፍለ-ጊዜ", en: "23 Sessions", om: "Kutaa 23", ti: "23 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ", teacher: "መኩሪያ ቴኒ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language", om: "Afaan Geez", ti: "ግእዝ" }, time: { am: "27 ክፍለ-ጊዜ", en: "27 Sessions", om: "Kutaa 27", ti: "27 ክፍለ-ጊዜ" }, schedule: "እሁድ", teacher: "ደግፍ ኃይሉ", status: "🟢 ጸድቋል" }
+        ],
+        g4: [
+          { subject: { am: "የዮሐንስ ወንጌል", en: "Gospel of John", om: "Wangeela Yohaannis", ti: "ወንጌል ዮሐንስ" }, time: { am: "35 ክፍለ-ጊዜ", en: "35 Sessions", om: "Kutaa 35", ti: "35 ክፍለ-ጊዜ" }, schedule: "እሁድ", teacher: "አድነው ተፈራ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language", om: "Afaan Geez", ti: "ግእዝ" }, time: { am: "28 ክፍለ-ጊዜ", en: "28 Sessions", om: "Kutaa 28", ti: "28 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ", teacher: "ቀሲስ ሙሉጌታ", status: "🟢 ጸድቋል" },
+          { subject: { am: "የቤተክርስቲያን አስተዳደር", en: "Church Administration", om: "Bulchiinsa Mana Krestaanaa", ti: "ምሕደራ ቤተክርስቲያን" }, time: { am: "19 ክፍለ-ጊዜ", en: "19 Sessions", om: "Kutaa 19", ti: "19 ክፍለ-ጊዜ" }, schedule: "እሁድ", teacher: "ዮሐንስ ገ/መስቀል", status: "🟢 ጸድቋል" },
+          { subject: { am: "ፍልስፍና", en: "Philosophy", om: "Fiilsoofii", ti: "ፍልስፍና" }, time: { am: "21 ክፍለ-ጊዜ", en: "21 Sessions", om: "Kutaa 21", ti: "21 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ", teacher: "ዳዊት ደስታ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ሐይማኖተ አበው", en: "Faith of the Fathers", om: "Amantaa Abbootii", ti: "ሃይማኖተ አበው" }, time: { am: "20 ክፍለ-ጊዜ", en: "20 Sessions", om: "Kutaa 20", ti: "20 ክፍለ-ጊዜ" }, schedule: "እሁድ", teacher: "አበበ ተሻለ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ሥርዓተ ቤተክርስቲያን", en: "Church Canon", om: "Sirna Mana Krestaanaa", ti: "ሥርዓተ ቤተክርስቲያን" }, time: { am: "20 ክፍለ-ጊዜ", en: "20 Sessions", om: "Kutaa 20", ti: "20 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ", teacher: "ጌትነት ማሞ", status: "🟢 ጸድቋል" }
+        ]
+      },
+      evening: {
+        g1: [
+          { subject: { am: "የቤተክርስቲያን ታሪክ በዓለም መድረክ", en: "World Church History", om: "Seenaa MK Addunyaa", ti: "ታሪክ ቤተክርስቲያን ኣብ ዓለም" }, time: { am: "25 ክፍለ-ጊዜ", en: "25 Sessions", om: "Kutaa 25", ti: "25 ክፍለ-ጊዜ" }, schedule: "ማክሰኞ / ሐሙስ / ቅዳሜ", teacher: "ፍሬሕይወት ንጉሤ", status: "🟢 ጸድቋል" },
+          { subject: { am: "የቤተክርስቲያን ታሪክ በኢትዮጵያ", en: "Ethiopian Church History", om: "Seenaa MK Itoophiyaa", ti: "ታሪክ ቤተክርስቲያን ኣብ ኢትዮጵያ" }, time: { am: "23 ክፍለ-ጊዜ", en: "23 Sessions", om: "Kutaa 23", ti: "23 ክፍለ-ጊዜ" }, schedule: "ማክሰኞ / ሐሙስ", teacher: "ተስፋዬ አማረ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ምሥጥራተ ቤተክርስቲያን", en: "Church Sacraments", om: "Iccitiiwwan Mana Krestaanaa", ti: "ምሥጥራተ ቤተክርስቲያን" }, time: { am: "20 ክፍለ-ጊዜ", en: "20 Sessions", om: "Kutaa 20", ti: "20 ክፍለ-ጊዜ" }, schedule: "ማክሰኞ", teacher: "ተስፋዬ በላይ", status: "🟢 ጸድቋል" },
+          { subject: { am: "የማቴዎስ ወንጌል ትርጓሜ", en: "Gospel of Matthew", om: "Hiika Wangeela Maatewos", ti: "ትርጓሜ ወንጌል ማቴዎስ" }, time: { am: "31 ክፍለ-ጊዜ", en: "31 Sessions", om: "Kutaa 31", ti: "31 ክፍለ-ጊዜ" }, schedule: "ቅዳሜ", teacher: "እንዳልካቸው ወንድምኩን", status: "🟢 ጸድቋል" },
+          { subject: { am: "ግእዝ ትምህርት", en: "Ge'ez Language", om: "Afaan Geez", ti: "ትምህርቲ ግእዝ" }, time: { am: "17 ክፍለ-ጊዜ", en: "17 Sessions", om: "Kutaa 17", ti: "17 ክፍለ-ጊዜ" }, schedule: "ሐሙስ", teacher: "ክርስቲ ተሾመ", status: "🟢 ጸድቋል" }
+        ],
+        g2: [
+          { subject: { am: "የቤተክርስቲያን ታሪክ በአለም መድረክ", en: "World Church History", om: "Seenaa MK Addunyaa", ti: "ታሪክ ቤተክርስቲያን ኣብ ዓለም" }, time: { am: "26 ክፍለ-ጊዜ", en: "26 Sessions", om: "Kutaa 26", ti: "26 ክፍለ-ጊዜ" }, schedule: "ማክሰኞ", teacher: "ዮሐንስ ገ/መስቀል", status: "🟢 ጸድቋል" },
+          { subject: { am: "የቤተክርስቲያን ታሪክ በኢትዮጵያ", en: "Ethiopian Church History", om: "Seenaa MK Itoophiyaa", ti: "ታሪክ ቤተክርስቲያን ኣብ ኢትዮጵያ" }, time: { am: "24 ክፍለ-ጊዜ", en: "24 Sessions", om: "Kutaa 24", ti: "24 ክፍለ-ጊዜ" }, schedule: "ሐሙስ", teacher: "ተስፋዬ አማረ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ምሥጥራተ ቤተክርስቲያን", en: "Church Sacraments", om: "Iccitiiwwan Mana Krestaanaa", ti: "ምሥጥራተ ቤተክርስቲያን" }, time: { am: "22 ክፍለ-ጊዜ", en: "22 Sessions", om: "Kutaa 22", ti: "22 ክፍለ-ጊዜ" }, schedule: "ሐሙስ", teacher: "ተስፋዬ በላይ", status: "🟢 ጸድቋል" },
+          { subject: { am: "የማቴዎስ ወንጌል", en: "Gospel of Matthew", om: "Wangeela Maatewos", ti: "ወንጌል ማቴዎስ" }, time: { am: "30 ክፍለ-ጊዜ", en: "30 Sessions", om: "Kutaa 30", ti: "30 ክፍለ-ጊዜ" }, schedule: "ማክሰኞ / ሐሙስ", teacher: "እንዳልካቸው ወንድምኩን", status: "🟢 ጸድቋል" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language", om: "Afaan Geez", ti: "ግእዝ" }, time: { am: "20 ክፍለ-ጊዜ", en: "20 Sessions", om: "Kutaa 20", ti: "20 ክፍለ-ጊዜ" }, schedule: "ሐሙስ", teacher: "ክርስቲ ተሾመ", status: "🟢 ጸድቋል" }
+        ],
+        g3: [
+          { subject: { am: "የዮሐንስ ወንጌል", en: "Gospel of John", om: "Wangeela Yohaannis", ti: "ወንጌል ዮሐንስ" }, time: { am: "41 ክፍለ-ጊዜ", en: "41 Sessions", om: "Kutaa 41", ti: "41 ክፍለ-ጊዜ" }, schedule: "ማክሰኞ", teacher: "በላቸው ይልማ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language", om: "Afaan Geez", ti: "ግእዝ" }, time: { am: "23 ክፍለ-ጊዜ", en: "23 Sessions", om: "Kutaa 23", ti: "23 ክፍለ-ጊዜ" }, schedule: "ማክሰኞ / ቅዳሜ", teacher: "ደግፍ ኃይሉ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ጥናትና ምርምር", en: "Research Methods", om: "Qorannoo fi Sakatta'iinsa", ti: "ጥናትና ምርምር" }, time: { am: "11 ክፍለ-ጊዜ", en: "11 Sessions", om: "Kutaa 11", ti: "11 ክፍለ-ጊዜ" }, schedule: "ሐሙስ", teacher: "ሰለሞን", status: "🟢 ጸድቋል" },
+          { subject: { am: "ክርስቲያናዊ ሕይወት", en: "Christian Life", om: "Jireenya Kirastaanummaa", ti: "ክርስቲያናዊ ሕይወት" }, time: { am: "23 ክፍለ-ጊዜ", en: "23 Sessions", om: "Kutaa 23", ti: "23 ክፍለ-ጊዜ" }, schedule: "ሐሙስ / ቅዳሜ", teacher: "ዲ/ን ኤልያስ ጥላሁን", status: "🟢 ጸድቋል" },
+          { subject: { am: "መዝሙርና ምስጢራቱ", en: "Hymns & Mysteries", om: "Faarfannaa fi Iccitiisaa", ti: "መዝሙርን ምስጢራቱን" }, time: { am: "18 ክፍለ-ጊዜ", en: "18 Sessions", om: "Kutaa 18", ti: "18 ክፍለ-ጊዜ" }, schedule: "ሐሙስ", teacher: "መኩሪያ ቴኒ", status: "🟢 ጸድቋል" }
+        ],
+        g4: [
+          { subject: { am: "የዮሐንስ ወንጌል", en: "Gospel of John", om: "Wangeela Yohaannis", ti: "ወንጌል ዮሐንስ" }, time: { am: "39 ክፍለ-ጊዜ", en: "39 Sessions", om: "Kutaa 39", ti: "39 ክፍለ-ጊዜ" }, schedule: "ማክሰኞ", teacher: "አድነው ተፈራ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language", om: "Afaan Geez", ti: "ግእዝ" }, time: { am: "25 ክፍለ-ጊዜ", en: "25 Sessions", om: "Kutaa 25", ti: "25 ክፍለ-ጊዜ" }, schedule: "ማክሰኞ / ቅዳሜ", teacher: "ቀሲስ ሙሉጌታ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ሃይማኖተ አበው", en: "Faith of the Fathers", om: "Amantaa Abbootii", ti: "ሃይማኖተ አበው" }, time: { am: "12 ክፍለ-ጊዜ", en: "12 Sessions", om: "Kutaa 12", ti: "12 ክፍለ-ጊዜ" }, schedule: "ሐሙስ", teacher: "አበበ ተሻለ", status: "🟢 ጸድቋል" },
+          { subject: { am: "የቤተክርስቲያን አስተዳደር", en: "Church Administration", om: "Bulchiinsa Mana Krestaanaa", ti: "ምሕደራ ቤተክርስቲያን" }, time: { am: "15 ክፍለ-ጊዜ", en: "15 Sessions", om: "Kutaa 15", ti: "15 ክፍለ-ጊዜ" }, schedule: "ሐሙስ", teacher: "ዮሐንስ ገ/መስቀል", status: "🟢 ጸድቋል" },
+          { subject: { am: "ፍልስፍና", en: "Philosophy", om: "Fiilsoofii", ti: "ፍልስፍና" }, time: { am: "14 ክፍለ-ጊዜ", en: "14 Sessions", om: "Kutaa 14", ti: "14 ክፍለ-ጊዜ" }, schedule: "ሐሙስ / ቅዳሜ", teacher: "ዳዊት ደስታ", status: "🟢 ጸድቋል" },
+          { subject: { am: "ሥርዓተ ቤተክርስቲያን", en: "Church Canon", om: "Sirna Mana Krestaanaa", ti: "ሥርዓተ ቤተክርስቲያን" }, time: { am: "12 ክፍለ-ጊዜ", en: "12 Sessions", om: "Kutaa 12", ti: "12 ክፍለ-ጊዜ" }, schedule: "ማክሰኞ / ሐሙስ", teacher: "ጌትነት ማሞ", status: "🟢 ጸድቋል" }
+        ]
+      },
+      distance: {
+        g1: [
+          { subject: { am: "ክርስቲያናዊ ሥነ-ምግባር", en: "Christian Ethics", om: "Amala Kirastaanummaa", ti: "ክርስቲያናዊ ሥነ-ምግባር" }, time: { am: "ሞጁል 1 (PDF)", en: "Module 1 (PDF)", om: "Moojulii 1 (PDF)", ti: "ሞጁል 1 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "የመጽሐፍ ቅዱስ ጥናት", en: "Bible Study", om: "Qorannoo Kitaaba Qulqulluu", ti: "መፅሐፍ ቅዱስ ጥናት" }, time: { am: "ሞጁል 2 (PDF)", en: "Module 2 (PDF)", om: "Moojulii 2 (PDF)", ti: "ሞጁል 2 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "የቤተክርስቲያን ታሪክ መግቢያ", en: "Intro to Church History", om: "Seenaa MK", ti: "መእተዊ ታሪክ ቤተክርስቲያን" }, time: { am: "ሞጁል 3 (PDF)", en: "Module 3 (PDF)", om: "Moojulii 3 (PDF)", ti: "ሞጁል 3 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ትምህርተ ሃይማኖት", en: "Dogmatic Theology", om: "Barnoota Amantaa", ti: "ትምህርተ ሃይማኖት" }, time: { am: "ሞጁል 4 (PDF)", en: "Module 4 (PDF)", om: "Moojulii 4 (PDF)", ti: "ሞጁል 4 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language", om: "Afaan Geez", ti: "ግእዝ" }, time: { am: "ሞጁል 5 (PDF)", en: "Module 5 (PDF)", om: "Moojulii 5 (PDF)", ti: "ሞጁል 5 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" }
+        ],
+        g2: [
+          { subject: { am: "የቤተክርስቲያን ታሪክ በአለም መድረክ", en: "World Church History" }, time: { am: "ሞጁል 1 (PDF)", en: "Module 1 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "የቤተክርስቲያን ታሪክ በኢትዮጵያ", en: "Ethiopian Church History" }, time: { am: "ሞጁል 2 (PDF)", en: "Module 2 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ምሥጥራተ ቤተክርስቲያን", en: "Church Sacraments" }, time: { am: "ሞጁል 3 (PDF)", en: "Module 3 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "የማቴዎስ ወንጌል", en: "Gospel of Matthew" }, time: { am: "ሞጁል 4 (PDF)", en: "Module 4 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language" }, time: { am: "ሞጁል 5 (PDF)", en: "Module 5 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" }
+        ],
+        g3: [
+          { subject: { am: "የዮሐንስ ወንጌል", en: "Gospel of John" }, time: { am: "ሞጁል 1 (PDF)", en: "Module 1 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ጥናት እና ምርምር", en: "Research Methods" }, time: { am: "ሞጁል 2 (PDF)", en: "Module 2 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ክርስቲያናዊ ሕይወት", en: "Christian Life" }, time: { am: "ሞጁል 3 (PDF)", en: "Module 3 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "መዝሙር እና ሚስጥራቱ", en: "Hymns & Mysteries" }, time: { am: "ሞጁል 4 (PDF)", en: "Module 4 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language" }, time: { am: "ሞጁል 5 (PDF)", en: "Module 5 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" }
+        ],
+        g4: [
+          { subject: { am: "የዮሐንስ ወንጌል", en: "Gospel of John" }, time: { am: "ሞጁል 1 (PDF)", en: "Module 1 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ግእዝ", en: "Ge'ez Language" }, time: { am: "ሞጁል 2 (PDF)", en: "Module 2 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "የቤተክርስቲያን አስተዳደር", en: "Church Administration" }, time: { am: "ሞጁል 3 (PDF)", en: "Module 3 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ፍልስፍና", en: "Philosophy" }, time: { am: "ሞጁል 4 (PDF)", en: "Module 4 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ሐይማኖተ አበው", en: "Faith of the Fathers" }, time: { am: "ሞጁል 5 (PDF)", en: "Module 5 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" },
+          { subject: { am: "ሥርዓተ ቤተክርስቲያን", en: "Church Canon" }, time: { am: "ሞጁል 6 (PDF)", en: "Module 6 (PDF)" }, schedule: "በራሱ ጊዜ / ኦንላይን", teacher: "ተመድቦ የሚጠበቅ", status: "🟢 ክፍት ነው" }
+        ]
+      }
+    };
+
+    const langLabelsMap = { am: "🇪🇹 አማርኛ", en: "🇬🇧 English", om: "🌳 Afaan Oromoo", ti: "🏔️ ትግርኛ" };
+
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    function changeLanguage(langCode) {
+      localStorage.setItem("preferredLang", langCode);
+      currentLanguage = langCode;
+      document.documentElement.lang = currentLanguage;
+      
+      const labelEl = document.getElementById("currentLangLabel");
+      if (labelEl) labelEl.textContent = langLabelsMap[currentLanguage] || "🇪🇹 አማርኛ";
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        const value = translations[currentLanguage]?.[key];
+        if (typeof value === "string") element.textContent = value;
+      });
+
+      renderTable();
+    }
+
+    function setGrade(grade) {
+      activeGrade = grade;
+      updateGradeButtons();
+      renderTable();
+    }
+
+    function updateGradeButtons() {
+      ['g1', 'g2', 'g3', 'g4'].forEach(g => {
+        const btn = document.getElementById(`btnGrade${g.toUpperCase()}`);
+        if (!btn) return;
+        if (g === activeGrade) {
+          btn.className = "px-4 py-2.5 rounded-xl text-xs font-bold transition bg-amber-100 text-rose-950 border border-amber-300 shadow-sm";
+        } else {
+          btn.className = "px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-50 text-gray-700 hover:bg-stone-100 border border-stone-200";
+        }
+      });
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById("curriculumTableBody");
+      const titleEl = document.getElementById("displayProgramTitle");
+      const badgeEl = document.getElementById("shiftBadge");
+      
+      if (!tbody) return;
+      tbody.innerHTML = "";
+
+      const shiftNames = {
+        am: { day: "☀️ የቀን መርሃ-ግብር", evening: "🌙 የማታ መርሃ-ግብር", distance: "📡 የርቀት ትምህርት" },
+        en: { day: "☀️ Day Program", evening: "🌙 Evening Program", distance: "📡 Distance Learning" },
+        om: { day: "☀️ Sagantaa Guyyaa", evening: "🌙 Sagantaa Galgalaa", distance: "📡 Barnoota Fageenyaa" },
+        ti: { day: "☀️ መደብ መዓልቲ", evening: "🌙 መደብ ምሸት", distance: "📡 ትምህርቲ ርሕቀት" }
+      };
+
+      if (badgeEl) {
+        badgeEl.textContent = shiftNames[currentLanguage]?.[activeShift] || shiftNames['am'][activeShift];
+      }
+
+      if (titleEl) {
+        const gradeText = gradeLabels[currentLanguage]?.[activeGrade] || gradeLabels['am'][activeGrade];
+        titleEl.textContent = gradeText;
+      }
+
+      const list = curriculumData[activeShift]?.[activeGrade] || [];
+      list.forEach((item, index) => {
+        const row = document.createElement("tr");
+        row.className = "hover:bg-stone-50 border-b border-gray-100 transition";
+        
+        const subj = item.subject[currentLanguage] || item.subject['am'];
+        const tm = item.time[currentLanguage] || item.time['am'];
+        
+        const sched = scheduleTranslations[currentLanguage]?.[item.schedule] || item.schedule;
+        const tcher = teacherTranslations[currentLanguage]?.[item.teacher] || item.teacher;
+        const stat = statusTranslations[currentLanguage]?.[item.status] || item.status;
+
+        row.innerHTML = `
+          <td class="p-4 font-bold text-rose-950">${index + 1}</td>
+          <td class="p-4 font-semibold">${subj}</td>
+          <td class="p-4 text-amber-800 font-semibold">${tm}</td>
+          <td class="p-4 text-gray-600">${sched}</td>
+          <td class="p-4 font-medium text-rose-950">${tcher}</td>
+          <td class="p-4">${stat}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function exportCurriculumExcel() {
+      let csv = 'No,Subject,ModuleOrTime,Schedule,Teacher,Status\n';
+      const list = curriculumData[activeShift]?.[activeGrade] || [];
+      list.forEach((row, idx) => {
+        const subj = row.subject[currentLanguage] || row.subject['am'];
+        const tm = row.time[currentLanguage] || row.time['am'];
+        const sched = scheduleTranslations[currentLanguage]?.[row.schedule] || row.schedule;
+        const tcher = teacherTranslations[currentLanguage]?.[row.teacher] || row.teacher;
+        const stat = statusTranslations[currentLanguage]?.[row.status] || row.status;
+        csv += `"${idx + 1}","${subj}","${tm}","${sched}","${tcher}","${stat}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `Curriculum_${activeShift}_${activeGrade}_${currentLanguage}.csv`;
+      link.click();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlShift = getQueryParam("shift");
+      if (urlShift && ['day', 'evening', 'distance'].includes(urlShift)) {
+        activeShift = urlShift;
+      }
+
+      updateGradeButtons();
+      const savedLang = localStorage.getItem("preferredLang") || "am";
+      changeLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>

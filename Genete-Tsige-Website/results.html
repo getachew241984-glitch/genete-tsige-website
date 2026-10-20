@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="am" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="የተማሪዎች ውጤት ማረጋገጫ - መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት" />
+  <meta name="theme-color" content="#641e32" />
+  <title data-i18n="pageTitle">የተማሪዎች ውጤት ማረጋገጫ | መናገሻ ገነተ ጽጌ ሰንበት ትምህርት ቤት</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- PapaParse CDN for robust Google Sheet CSV parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  
+  <style>
+    :root {
+      --burgundy: #641e32;
+      --gold: #c6a04a;
+      --cream: #faf8f4;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Noto Sans Ethiopic", "Nyala", sans-serif;
+      background: var(--cream);
+    }
+    .focus-ring:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  </style>
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+  <!-- HEADER NAVIGATION WITH LOGO & MULTI-LANGUAGE SWITCHER -->
+  <header class="sticky top-0 z-50 bg-white shadow-md border-b border-stone-200">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-8">
+      
+      <!-- LOGO AND BRAND NAME -->
+      <a href="index.html" class="flex min-w-0 items-center gap-2.5 focus-ring rounded-lg shrink-0">
+        <img
+          src="logo.png"
+          alt="አርማ"
+          class="h-11 w-11 shrink-0 rounded-full object-cover bg-white shadow-sm border border-stone-200 md:h-12 md:w-12"
+          onerror="this.style.display='none'; document.getElementById('logoFallback').classList.remove('hidden');"
+        />
+        <div id="logoFallback" class="hidden flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-amber-600 bg-rose-950 text-base text-amber-300 md:h-12 md:w-12">
+          ✝
+        </div>
+        <div class="min-w-0">
+          <h1 class="font-bold text-rose-950 text-base md:text-xl" data-i18n="brandName">መናገሻ ገነተ ጽጌ</h1>
+          <p class="text-[10px] text-gray-600 font-medium sm:text-xs" data-i18n="brandSubtitle">ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት</p>
+        </div>
+      </a>
+
+      <!-- CONTROLS: LANGUAGE DROPDOWN & BACK HOME -->
+      <div class="flex items-center gap-3">
+        
+        <!-- MULTI-LANGUAGE DROPDOWN -->
+        <div class="relative group">
+          <button type="button" class="focus-ring flex items-center gap-1 rounded-lg border border-amber-600 bg-amber-50/50 px-2.5 py-1 text-xs font-bold text-rose-950 hover:bg-amber-100 transition">
+            <span id="currentLangLabel">🇪🇹 አማርኛ</span>
+            <span class="text-[10px]">▾</span>
+          </button>
+          <div class="hidden group-hover:flex absolute right-0 top-full w-36 flex-col rounded-lg bg-white shadow-xl border border-stone-100 py-1.5 z-50">
+            <button onclick="changeLanguage('am')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🇪🇹 አማርኛ</button>
+            <button onclick="changeLanguage('en')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🇬🇧 English</button>
+            <button onclick="changeLanguage('om')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🌳 Afaan Oromoo</button>
+            <button onclick="changeLanguage('ti')" class="text-left px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-amber-50 hover:text-rose-950 transition">🏔️ ትግርኛ</button>
+          </div>
+        </div>
+
+        <a href="index.html" class="focus-ring rounded-lg border border-rose-950 px-4 py-2 text-xs font-bold text-rose-950 hover:bg-rose-50 transition" data-i18n="backHome">
+          &larr; ወደ ዋናው ገጽ
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN RESULT SEARCH PORTAL -->
+  <main class="flex-grow mx-auto max-w-3xl w-full px-4 py-12">
+    <div class="bg-white p-6 md:p-10 rounded-3xl shadow-xl border border-stone-200">
+      
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-3 py-1 rounded-full" data-i18n="portalBadge">ሪፖርት ፖርታል</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-rose-950 mt-3" data-i18n="portalTitle">የተማሪዎች ውጤት ማረጋገጫ</h2>
+        <p class="text-xs md:text-sm text-gray-500 mt-1" data-i18n="portalSub">የመለያ ቁጥርዎን (Student ID) በማስገባት የ1ኛ እና 2ኛ የትምህርት ዘመን ውጤትዎን ይከታተሉ።</p>
+      </div>
+
+      <form id="resultForm" onsubmit="checkStudentResult(event)" class="space-y-5">
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblStudentId">የተማሪ መለያ ቁጥር (Student ID) *</label>
+          <input 
+            type="text" 
+            id="studentIdInput" 
+            required 
+            placeholder="ምሳሌ፦ STG/N/076/16 ወይም STG/SN/441/15" 
+            class="w-full border-2 border-stone-300 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-600 shadow-inner uppercase"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblShift">የትምህርት መርሃ-ግብር (Shift) *</label>
+            <select id="shiftSelect" class="w-full border border-stone-300 rounded-xl p-3 text-sm focus:outline-none">
+              <option value="day" data-i18n="optDay">☀️ የቀን መርሃ-ግብር</option>
+              <option value="evening" selected data-i18n="optEve">🌙 የማታ መርሃ-ግብር</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="lblLevel">የክፍል ደረጃ *</label>
+            <select id="levelSelect" class="w-full border border-stone-300 rounded-xl p-3 text-sm focus:outline-none">
+              <option value="ቀዳማይ" data-i18n="level1">ቀዳማይ ክፍል</option>
+              <option value="ካልኣይ" data-i18n="level2">ካልኣይ ክፍል</option>
+              <option value="ሣልሳይ" selected data-i18n="level3">ሣልሳይ ክፍል</option>
+              <option value="ራብዓይ" data-i18n="level4">ራብዓይ ክፍል</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-rose-950 hover:bg-rose-900 text-amber-300 font-bold py-3.5 rounded-xl shadow-md transition duration-200 text-sm flex items-center justify-center gap-2">
+          <span>🔍</span> <span data-i18n="btnSearch">ውጤት ፈልግ (Check Result)</span>
+        </button>
+      </form>
+
+      <!-- RESULT CARD DISPLAY CONTAINER -->
+      <div id="resultDisplay" class="mt-8 hidden p-6 rounded-2xl bg-stone-50 border-2 border-amber-300">
+        <!-- Dynamic Results Rendition -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#3a101f] px-6 py-6 text-center text-sm text-gray-300">
+    <p data-i18n="footerText">© 2026 የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን ሰንበት ትምህርት ቤት</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    const LIVE_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQW6ME6pWXgjjbZXRKdSIyP1KoOBVtS9TqNZNKdAc01egFdMppzGso_EFwYzHU7QyPiuWVGmKhe2IFh/pub?output=csv";
+    let currentStudentMatch = null;
+
+    // MASTER BACKUP DATABASE (165 STUDENTS)
+    const masterStudentData = [
+      { id: "STG/SN/472/16", sem1: { john: "0", geez: "0", christian: "0", research: "0", hymn: "-", total: "0", avg: "0" }, sem2: { john: "0", geez: "0", christian: "0", research: "-", hymn: "0", total: "0", avg: "0" }, overall: { avg: "0", status: "አልተዘዋወረም/ችም" } },
+      { id: "STG/N/005/15",  sem1: { john: "30", geez: "32", christian: "65", research: "44", hymn: "-", total: "171", avg: "42.75" }, sem2: { john: "50", geez: "70", christian: "78", research: "-", hymn: "58", total: "64", avg: "40" }, overall: { avg: "52.9", status: "አልተዘዋወረም/ችም" } },
+      { id: "STG/N/003/16",  sem1: { john: "72", geez: "37", christian: "95.5", research: "68", hymn: "-", total: "272.5", avg: "68.13" }, sem2: { john: "74", geez: "61", christian: "75", research: "-", hymn: "60", total: "270.0", avg: "67.5" }, overall: { avg: "67.05", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/KN/005/15", sem1: { john: "0", geez: "0", christian: "0", research: "0", hymn: "-", total: "0", avg: "0" }, sem2: { john: "0", geez: "0", christian: "0", research: "-", hymn: "0", total: "0", avg: "0" }, overall: { avg: "0", status: "አልተዘዋወረም/ችም" } },
+      { id: "STG/SN/401/15", sem1: { john: "0", geez: "0", christian: "0", research: "0", hymn: "-", total: "0", avg: "0" }, sem2: { john: "0", geez: "0", christian: "0", research: "-", hymn: "16", total: "16.0", avg: "4" }, overall: { avg: "3.2", status: "አልተዘዋወረም/ችም" } },
+      { id: "STG/N/005/14",  sem1: { john: "81", geez: "69", christian: "59", research: "54", hymn: "-", total: "263", avg: "65.75" }, sem2: { john: "72", geez: "56", christian: "67", research: "-", hymn: "0", total: "195.0", avg: "48.75" }, overall: { avg: "51.2", status: "አልተዘዋወረም/ችም" } },
+      { id: "STGDS/029/16",  sem1: { john: "74", geez: "79", christian: "66", research: "66", hymn: "-", total: "285", avg: "71.25" }, sem2: { john: "90", geez: "71", christian: "83", research: "-", hymn: "57", total: "301.0", avg: "75.25" }, overall: { avg: "70.9", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/N/013/16",  sem1: { john: "74", geez: "58", christian: "88", research: "66", hymn: "-", total: "286", avg: "71.5" }, sem2: { john: "35", geez: "57", christian: "72", research: "-", hymn: "48", total: "212.0", avg: "53" }, overall: { avg: "61.2", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/N/019/16",  sem1: { john: "86", geez: "79", christian: "98", research: "40", hymn: "-", total: "303", avg: "75.75" }, sem2: { john: "81", geez: "83", christian: "92", research: "-", hymn: "66", total: "322.0", avg: "80.5" }, overall: { avg: "73.1", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/N/027/16",  sem1: { john: "74", geez: "52", christian: "91", research: "60", hymn: "-", total: "277", avg: "69.25" }, sem2: { john: "62", geez: "53", christian: "79.5", research: "-", hymn: "50", total: "244.5", avg: "61.13" }, overall: { avg: "63.15", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/N/033/16",  sem1: { john: "48", geez: "40", christian: "33", research: "61.5", hymn: "-", total: "182.5", avg: "45.63" }, sem2: { john: "0", geez: "0", christian: "0", research: "-", hymn: "0", total: "0.0", avg: "0" }, overall: { avg: "24.4", status: "አልተዘዋወረም/ችም" } },
+      { id: "STG/N/035/14",  sem1: { john: "69", geez: "27", christian: "91", research: "74", hymn: "-", total: "261", avg: "65.25" }, sem2: { john: "91", geez: "74", christian: "73", research: "-", hymn: "105.5", total: "343.5", avg: "85.88" }, overall: { avg: "75.56", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/N/064/16",  sem1: { john: "93", geez: "53", christian: "90", research: "93", hymn: "-", total: "329", avg: "82.25" }, sem2: { john: "90", geez: "67", christian: "64", research: "-", hymn: "341.25", total: "562.25", avg: "140.56" }, overall: { avg: "111.41", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/N/056/14",  sem1: { john: "71", geez: "27", christian: "78", research: "58", hymn: "-", total: "234", avg: "58.5" }, sem2: { john: "89", geez: "18", christian: "64", research: "-", hymn: "301", total: "472.0", avg: "118" }, overall: { avg: "88.25", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/SN/492/16", sem1: { john: "93", geez: "79", christian: "94", research: "92", hymn: "-", total: "358", avg: "89.5" }, sem2: { john: "96", geez: "83", christian: "72", research: "-", hymn: "345.25", total: "596.25", avg: "149.06" }, overall: { avg: "119.28", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/SN/441/15", sem1: { john: "68", geez: "50", christian: "89", research: "76", hymn: "-", total: "283", avg: "70.75" }, sem2: { john: "35", geez: "65", christian: "81", research: "-", hymn: "64", total: "61.25", avg: "52" }, overall: { avg: "66.8", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/N/075/16",  sem1: { john: "79", geez: "50", christian: "92", research: "89", hymn: "-", total: "310", avg: "77.5" }, sem2: { john: "97", geez: "15", christian: "72", research: "-", hymn: "314.25", total: "498.25", avg: "124.56" }, overall: { avg: "101.03", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/N/076/16",  sem1: { john: "93", geez: "46", christian: "90", research: "98", hymn: "-", total: "327", avg: "81.75" }, sem2: { john: "89.7", geez: "15", christian: "90", research: "-", hymn: "74", total: "67.18", avg: "91" }, overall: { avg: "76.77", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/N/080/16",  sem1: { john: "54", geez: "48", christian: "60", research: "70", hymn: "-", total: "232", avg: "58" }, sem2: { john: "60", geez: "50", christian: "70", research: "-", hymn: "60", total: "240.0", avg: "60" }, overall: { avg: "59.0", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/SN/503/16", sem1: { john: "75", geez: "84", christian: "85", research: "90", hymn: "-", total: "334", avg: "83.5" }, sem2: { john: "80", geez: "85", christian: "88", research: "-", hymn: "85", total: "338.0", avg: "84.5" }, overall: { avg: "84.0", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/N/130/16",  sem1: { john: "85", geez: "63", christian: "95", research: "74", hymn: "-", total: "317", avg: "79.25" }, sem2: { john: "79", geez: "87", christian: "86", research: "-", hymn: "73", total: "81.25", avg: "82" }, overall: { avg: "78.9", status: "ተዘዋውሯል/ለች" } },
+      { id: "STG/SN/530/16", sem1: { john: "60", geez: "47", christian: "95.5", research: "90", hymn: "-", total: "292.5", avg: "73.13" }, sem2: { john: "65", geez: "47", christian: "94", research: "67", hymn: "-", total: "273", avg: "68.25" }, overall: { avg: "68.25", status: "ተዛውረዋል (ታልፈዋል)" } },
+      { id: "STG/N/139/16",  sem1: { john: "50", geez: "40", christian: "80", research: "30", hymn: "-", total: "200", avg: "50.00" }, sem2: { john: "76", geez: "70", christian: "95", research: "18", hymn: "-", total: "259", avg: "64.75" }, overall: { avg: "60.20", status: "ተዛውረዋል (ታልፈዋል)" } },
+      { id: "STG/N/107/15",  sem1: { john: "70", geez: "50", christian: "85", research: "60", hymn: "-", total: "265", avg: "66.25" }, sem2: { john: "87", geez: "16", christian: "102", research: "83", hymn: "-", total: "288", avg: "72.00" }, overall: { avg: "69.05", status: "ተዛውረዋል (ታልፈዋል)" } },
+      { id: "STG/SN/429/15", sem1: { john: "60", geez: "45", christian: "90", research: "40", hymn: "-", total: "235", avg: "58.75" }, sem2: { john: "77", geez: "40", christian: "97", research: "15", hymn: "-", total: "229", avg: "57.25" }, overall: { avg: "62.85", status: "ተዛውረዋል (ታልፈዋል)" } }
+    ];
+
+    function checkStudentResult(e) {
+      if (e) e.preventDefault();
+      
+      const inputId = document.getElementById("studentIdInput").value.trim().toUpperCase();
+      const display = document.getElementById("resultDisplay");
+      
+      if (!inputId) return;
+
+      const lang = localStorage.getItem("preferredLang") || "am";
+      const t = translations[lang] || translations.am;
+
+      display.classList.remove("hidden");
+      display.innerHTML = `<div class="text-center text-amber-800 font-bold py-3">⏳ ${t.searching}</div>`;
+
+      Papa.parse(LIVE_CSV_URL, {
+        download: true,
+        header: false,
+        skipEmptyLines: true,
+        complete: function(results) {
+          const rows = results.data;
+          let foundStudent = null;
+
+          for (let i = 0; i < rows.length; i++) {
+            const cols = rows[i];
+            if (cols[0] && cols[0].trim().toUpperCase() === inputId) {
+              foundStudent = {
+                id: cols[0].trim(),
+                sem1: {
+                  john: cols[1] || "-",
+                  geez: cols[2] || "-",
+                  christian: cols[3] || "-",
+                  research: cols[4] || "-",
+                  hymn: cols[5] || "-",
+                  total: cols[6] || "0",
+                  avg: cols[7] || "0.00"
+                },
+                sem2: {
+                  john: cols[8] || "-",
+                  geez: cols[9] || "-",
+                  christian: cols[10] || "-",
+                  research: cols[11] || "-",
+                  hymn: cols[12] || "-",
+                  total: cols[13] || "0",
+                  avg: cols[14] || "0.00"
+                },
+                overall: {
+                  avg: cols[15] || cols[7] || "0.00",
+                  status: cols[16] || "ተዘዋውሯል/ለች"
+                }
+              };
+              break;
+            }
+          }
+
+          if (!foundStudent) {
+            foundStudent = masterStudentData.find(item => item.id.trim().toUpperCase() === inputId);
+          }
+
+          currentStudentMatch = foundStudent;
+          renderResultCard(foundStudent, inputId);
+        },
+        error: function(err) {
+          const foundStudent = masterStudentData.find(item => item.id.trim().toUpperCase() === inputId);
+          currentStudentMatch = foundStudent;
+          renderResultCard(foundStudent, inputId);
+        }
+      });
+    }
+
+    function renderResultCard(foundStudent, inputId) {
+      const display = document.getElementById("resultDisplay");
+      const lang = localStorage.getItem("preferredLang") || "am";
+      const t = translations[lang] || translations.am;
+
+      if (foundStudent) {
+        display.innerHTML = `
+          <div class="text-center border-b pb-3 mb-4">
+            <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">✅ ${t.cardHeader}</span>
+            <h3 class="text-xl font-extrabold text-rose-950 mt-2">${foundStudent.id}</h3>
+          </div>
+          
+          <div class="space-y-6">
+            <!-- 1ኛ የትምህርት ዘመን -->
+            <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+              <h4 class="font-bold text-amber-800 text-sm border-b pb-2 mb-2 flex items-center justify-between">
+                <span>📘 ${t.sem1Title}</span>
+                <span class="text-xs bg-amber-50 px-2 py-0.5 rounded text-amber-900">${t.avgLabel}፦ ${foundStudent.sem1.avg}%</span>
+              </h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-gray-700">
+                <div>1. ${t.subjJohn}፦ <strong>${foundStudent.sem1.john}</strong></div>
+                <div>2. ${t.subjGeez}፦ <strong>${foundStudent.sem1.geez}</strong></div>
+                <div>3. ${t.subjChristian}፦ <strong>${foundStudent.sem1.christian}</strong></div>
+                <div>4. ${t.subjResearch}፦ <strong>${foundStudent.sem1.research}</strong></div>
+                <div>5. ${t.subjHymn}፦ <strong>${foundStudent.sem1.hymn}</strong></div>
+                <div class="col-span-2 pt-1 border-t text-rose-950 font-bold">${t.totalLabel}፦ ${foundStudent.sem1.total}</div>
+              </div>
+            </div>
+
+            <!-- 2ኛ የትምህርት ዘመን -->
+            <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+              <h4 class="font-bold text-amber-800 text-sm border-b pb-2 mb-2 flex items-center justify-between">
+                <span>📙 ${t.sem2Title}</span>
+                <span class="text-xs bg-amber-50 px-2 py-0.5 rounded text-amber-900">${t.avgLabel}፦ ${foundStudent.sem2.avg}%</span>
+              </h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-gray-700">
+                <div>1. ${t.subjJohn}፦ <strong>${foundStudent.sem2.john}</strong></div>
+                <div>2. ${t.subjGeez}፦ <strong>${foundStudent.sem2.geez}</strong></div>
+                <div>3. ${t.subjChristian}፦ <strong>${foundStudent.sem2.christian}</strong></div>
+                <div>4. ${t.subjResearch}፦ <strong>${foundStudent.sem2.research}</strong></div>
+                <div>5. ${t.subjHymn}፦ <strong>${foundStudent.sem2.hymn}</strong></div>
+                <div class="col-span-2 pt-1 border-t text-rose-950 font-bold">${t.totalLabel}፦ ${foundStudent.sem2.total}</div>
+              </div>
+            </div>
+
+            <!-- የዓመቱ አጠቃላይ አማካኝ SUMMARY -->
+            <div class="bg-rose-950 text-white p-5 rounded-xl shadow-md border border-amber-400 flex flex-col sm:flex-row justify-between items-center gap-3">
+              <div>
+                <p class="text-xs text-amber-300 font-semibold">${t.yearlyAvgLabel}</p>
+                <h3 class="text-2xl font-black text-amber-300">${foundStudent.overall.avg}%</h3>
+              </div>
+              <div class="text-right">
+                <span class="inline-block bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow">
+                  ${foundStudent.overall.status}
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        display.innerHTML = `
+          <div class="text-center text-red-700 font-bold text-sm bg-red-50 p-4 rounded-xl border border-red-200">
+            ❌ «${inputId}» ${t.notFoundText}
+          </div>
+        `;
+      }
+    }
+
+    // MULTI-LANGUAGE TRANSLATIONS DICTIONARY
+    const translations = {
+      am: {
+        pageTitle: "የተማሪዎች ውጤት ማረጋገጫ | መናገሻ ገነተ ጽጌ ሰንበት ትምህርት ቤት",
+        brandName: "መናገሻ ገነተ ጽጌ",
+        brandSubtitle: "ቅዱስ ጊዮርጊስ ሰንበት ትምህርት ቤት",
+        backHome: "← ወደ ዋናው ገጽ",
+        portalBadge: "ሪፖርት ፖርታል",
+        portalTitle: "የተማሪዎች ውጤት ማረጋገጫ",
+        portalSub: "የመለያ ቁጥርዎን (Student ID) በማስገባት የ1ኛ እና 2ኛ የትምህርት ዘመን ውጤትዎን ይከታተሉ።",
+        lblStudentId: "የተማሪ መለያ ቁጥር (Student ID) *",
+        lblShift: "የትምህርት መርሃ-ግብር (Shift) *",
+        optDay: "☀️ የቀን መርሃ-ግብር",
+        optEve: "🌙 የማታ መርሃ-ግብር",
+        lblLevel: "የክፍል ደረጃ *",
+        level1: "ቀዳማይ ክፍል",
+        level2: "ካልኣይ ክፍል",
+        level3: "ሣልሳይ ክፍል",
+        level4: "ራብዓይ ክፍል",
+        btnSearch: "ውጤት ፈልግ (Check Result)",
+        footerText: "© 2026 የመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተክርስቲያን ሰንበት ትምህርት ቤት",
+        searching: "ውጤት በመፈለግ ላይ ነው...",
+        cardHeader: "የተማሪ ውጤት ሪፖርት (ሣልሳይ ክፍል)",
+        sem1Title: "የ1ኛ የትምህርት ዘመን ውጤት",
+        sem2Title: "የ2ኛ የትምህርት ዘመን ውጤት",
+        subjJohn: "የዮሐንስ ወንጌል",
+        subjGeez: "ግእዝ",
+        subjChristian: "ክርስቲያናዊ ሕይወት",
+        subjResearch: "ጥናትና ምርምር",
+        subjHymn: "መዝሙርና ምስጢራቱ",
+        totalLabel: "ድምር ውጤት",
+        avgLabel: "አማካኝ",
+        yearlyAvgLabel: "የዓመቱ አጠቃላይ አማካኝ ውጤት (YEARLY AVERAGE)",
+        notFoundText: "በሚያስገቡት መለያ ቁጥር የተመዘገበ ተማሪ በሣልሳይ ክፍል ማርክ ሺት ውስጥ አልተገኘም። እባክዎ ቁጥሩን በድጋሚ ይፈትሹ።"
+      },
+      en: {
+        pageTitle: "Student Results Checker | Menagesha Genete Tsige Sunday School",
+        brandName: "Menagesha Genete Tsige",
+        brandSubtitle: "St. George Sunday School",
+        backHome: "← Back to Home",
+        portalBadge: "RESULTS PORTAL",
+        portalTitle: "Student Result Verification",
+        portalSub: "Enter your Student ID to check your Semester 1 and Semester 2 results.",
+        lblStudentId: "Student ID *",
+        lblShift: "Program / Shift *",
+        optDay: "☀️ Day Program",
+        optEve: "🌙 Evening Program",
+        lblLevel: "Grade Level *",
+        level1: "Grade 1 (Qadamay)",
+        level2: "Grade 2 (Kal'ay)",
+        level3: "Grade 3 (Salisay)",
+        level4: "Grade 4 (Rab'ay)",
+        btnSearch: "Check Result",
+        footerText: "© 2026 Menagesha Genete Tsige St. George Sunday School",
+        searching: "Searching student result...",
+        cardHeader: "Student Result Report (Grade 3)",
+        sem1Title: "Semester 1 Result",
+        sem2Title: "Semester 2 Result",
+        subjJohn: "Gospel of John",
+        subjGeez: "Geez Language",
+        subjChristian: "Christian Life",
+        subjResearch: "Research & Studies",
+        subjHymn: "Hymns & Mysteries",
+        totalLabel: "Total Marks",
+        avgLabel: "Average",
+        yearlyAvgLabel: "YEARLY OVERALL AVERAGE",
+        notFoundText: "Student ID not found in Grade 3 Marksheet. Please check the ID again."
+      },
+      om: {
+        pageTitle: "Mirkaneessa Bu'aa Barattootaa | Managasha Ganata Tsigge",
+        brandName: "Managasha Ganata Tsigge",
+        brandSubtitle: "Mana Barnoota Dilbata Qulqulluu Gyoorgis",
+        backHome: "← Gara Fuula Duraatti",
+        portalBadge: "PORTALII BU'AA",
+        portalTitle: "Mirkaneessa Bu'aa Barattootaa",
+        portalSub: "Lakk. Eenyummaa barataa (Student ID) galchuun bu'aa keessan hordofaa.",
+        lblStudentId: "Lakk. Eenyummaa Barataa (Student ID) *",
+        lblShift: "Sagantaa Barnootaa *",
+        optDay: "☀️ Sagantaa Guyyaa",
+        optEve: "🌙 Sagantaa Galgalaa",
+        lblLevel: "Sadarkaa Kutaa *",
+        level1: "Kutaa 1ffaa (Qadamay)",
+        level2: "Kutaa 2ffaa (Kal'ay)",
+        level3: "Kutaa 3ffaa (Salisay)",
+        level4: "Kutaa 4ffaa (Rab'ay)",
+        btnSearch: "Bu'aa Barbaadi",
+        footerText: "© 2026 Mana Barnoota Dilbata Managasha Ganata Tsigge Qulqulluu Gyoorgis",
+        searching: "Bu'aa barbaadaa jira...",
+        cardHeader: "Gabaasa Bu'aa Barataa (Kutaa 3ffaa)",
+        sem1Title: "Bu'aa Semisteera 1ffaa",
+        sem2Title: "Bu'aa Semisteera 2ffaa",
+        subjJohn: "Wangeela Yohannis",
+        subjGeez: "Afaan Geez",
+        subjChristian: "Jireenya Kiristaanummaa",
+        subjResearch: "Qorannoo fi Qal'ina",
+        subjHymn: "Faarfannaa fi Iccitii",
+        totalLabel: "Ida'ama Bu'aa",
+        avgLabel: "Averiijii",
+        yearlyAvgLabel: "AVERIIJII WAGGAATAA WALIIGALAA",
+        notFoundText: "Lakk. barataa kanaan barataan Kutaa 3ffaa keessatti hin argamne."
+      },
+      ti: {
+        pageTitle: "ምርግጋጽ ውጽኢት ተመሃሮ | መናገሻ ገነተ ጽጌ ቤት ትምህርቲ ሰንበት",
+        brandName: "መናገሻ ገነተ ጽጌ",
+        brandSubtitle: "ቤት ትምህርቲ ሰንበት ቅዱስ ጊዮርጊስ",
+        backHome: "← ናብ ዋና ገጽ",
+        portalBadge: "ፖርታል ውጽኢት",
+        portalTitle: "ምርግጋጽ ውጽኢት ተመሃሮ",
+        portalSub: "ቁጽሪ መለለዪ (Student ID) ብምእታው ናይ 1ይ ሰሚስተር ውጽኢትኩም ተኸታተሉ።",
+        lblStudentId: "ቁጽሪ መለለዪ ተመሃራይ (Student ID) *",
+        lblShift: "መደብ ትምህርቲ *",
+        optDay: "☀️ መደብ መዓልቲ",
+        optEve: "🌙 መደብ ምሸት",
+        lblLevel: "ደረጃ ክፍሊ *",
+        level1: "ቀዳማይ ክፍሊ",
+        level2: "ካልኣይ ክፍሊ",
+        level3: "ሣልሳይ ክፍሊ",
+        level4: "ራብዓይ ክፍሊ",
+        btnSearch: "ውጽኢት ደሊ",
+        footerText: "© 2026 ቤት ትምህርቲ ሰንበት መናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ",
+        searching: "ውጽኢት ብምድላይ ላይ ይርከብ...",
+        cardHeader: "ሪፖርት ውጽኢት ተመሃራይ (ሣልሳይ ክፍሊ)",
+        sem1Title: "ውጽኢት 1ይ ሰሚስተር",
+        sem2Title: "ውጽኢት 2ይ ሰሚስተር",
+        subjJohn: "ወንጌል ዮሐንስ",
+        subjGeez: "ግእዝ",
+        subjChristian: "ክርስቲያናዊ ሕይወት",
+        subjResearch: "ጽናዕትን ምርምርን",
+        subjHymn: "መዝሙርን ምስጢራቱን",
+        totalLabel: "ድምር ውጽኢት",
+        avgLabel: "አማካኝ",
+        yearlyAvgLabel: "አጠቃላይ አማካኝ ውጽኢት ዓመት",
+        notFoundText: "ብዝእተወ መለለዪ ቁጽሪ እተመዝገበ ተመሃራይ ኣብ ሣልሳይ ክፍሊ ኣይተረኽበን።"
+      }
+    };
+
+    const langLabelsMap = {
+      am: "🇪🇹 አማርኛ",
+      en: "🇬🇧 English",
+      om: "🌳 Afaan Oromoo",
+      ti: "🏔️ ትግርኛ"
+    };
+
+    function changeLanguage(langCode) {
+      if (!translations[langCode]) return;
+      localStorage.setItem("preferredLang", langCode);
+      document.documentElement.lang = langCode;
+
+      const labelEl = document.getElementById("currentLangLabel");
+      if (labelEl) labelEl.textContent = langLabelsMap[langCode] || "🇪🇹 አማርኛ";
+
+      // Translate static data-i18n elements
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        const text = translations[langCode]?.[key];
+        if (text) element.textContent = text;
+      });
+
+      // Re-render result card dynamically if a student is currently searched
+      if (currentStudentMatch) {
+        const inputId = document.getElementById("studentIdInput").value.trim().toUpperCase();
+        renderResultCard(currentStudentMatch, inputId);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const inputField = document.getElementById("studentIdInput");
+      if (inputField) {
+        inputField.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            checkStudentResult();
+          }
+        });
+      }
+
+      const savedLang = localStorage.getItem("preferredLang") || "am";
+      changeLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>
